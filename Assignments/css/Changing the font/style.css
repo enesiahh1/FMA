@@ -1,0 +1,9 @@
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+hr~h2,
+hr~h1,
+hr~p {
+    font-family: 'Courier New', Courier, monospace;
+}

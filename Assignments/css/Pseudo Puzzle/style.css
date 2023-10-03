@@ -1,0 +1,12 @@
+
+.hover-paragraph:hover {
+    background-color: green; 
+  }
+ 
+  .hover-paragraph::first-letter {
+    font-size: 1.5em;
+  }
+  body {
+    background-color: black;
+  }
+  
