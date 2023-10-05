@@ -8,22 +8,26 @@ h1 {
     background: linear-gradient(160deg, rgba(148, 148, 148, .5) 0%, rgba(0, 212, 255, .5) 50%, rgba(0, 212, 255, .5) 100%);
     color: white;
 }
+
 h2 {
-    background: rgb(148,148,148);
-background: linear-gradient(180deg, rgba(148,148,148,0.9416141456582633) 0%, rgba(255,255,255,1) 50%, rgba(0,212,255,1) 100%);
+    background: rgb(148, 148, 148);
+    background: linear-gradient(180deg, rgba(148, 148, 148, 0.9416141456582633) 0%, rgba(255, 255, 255, 1) 50%, rgba(0, 212, 255, 1) 100%);
 }
+
 p {
-    background: rgb(0,0,0);
-background: linear-gradient(0deg, rgba(0,0,0,.3) 0%, rgba(0,0,0,.3) 100%, rgba(0,0,0,.3) 100%);
-color: blue;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, .3) 0%, rgba(0, 0, 0, .3) 100%, rgba(0, 0, 0, .3) 100%);
+    color: blue;
 }
+
 footer p {
-    background: rgb(0,0,0);
-    background: linear-gradient(0deg, rgba(0,0,0,.3) 0%, rgba(0,0,0,.3) 100%, rgba(0,0,0,.3) 100%);
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, .3) 0%, rgba(0, 0, 0, .3) 100%, rgba(0, 0, 0, .3) 100%);
     color: red;
 }
+
 ul {
-    background: rgb(255,255,255);
-background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.1) 100%, rgba(255,255,255,.1) 100%);
-color: green;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, .1) 0%, rgba(255, 255, 255, .1) 100%, rgba(255, 255, 255, .1) 100%);
+    color: green;
 }
