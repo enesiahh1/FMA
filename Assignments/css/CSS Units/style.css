@@ -1,0 +1,35 @@
+body {
+    margin: 0px;
+}
+
+section:nth-child(odd) {
+    background-color: rgb(48, 48, 48);
+    color: white;
+}
+
+section:nth-child(even) {
+    background-color: rgb(253, 253, 171);
+    color: black;
+}
+
+h1 {
+    text-decoration: underline;
+    font-size: 2em;
+}
+
+p {
+    font-size: 1em;
+}
+
+hr {
+    width: 33%;
+    border-color: red;
+}
+
+section {
+    height: 25vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

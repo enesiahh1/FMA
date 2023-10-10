@@ -1,0 +1,17 @@
+img {
+    float: left;
+    margin-right: 20px;
+}
+
+p {
+    position: relative;
+    padding: 10px;
+    float: top;
+}
+
+img:hover {
+    width: 550px;
+    background-color: #f2f2f2;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, .4);
+    cursor: pointer;
+}
