@@ -13,15 +13,23 @@ table {
 
 th,
 td {
-    border: 1px solid black;
+    border: 1px solid green;
+}
+
+th:hover,
+td:hover {
+    background-color: green;
+    color: black;
 }
 
 a:hover {
     cursor: url(images/ch.png) 0 0, auto;
+    position: relative;
 }
 
 img:hover {
     cursor: url(images/ch.png) 0 0, auto;
+    box-shadow: green 3px 3px;
 }
 
 button:hover {
@@ -36,22 +44,39 @@ button:hover {
     cursor: url(images/ch.png) 20 20, auto;
 }
 
+.nav:hover {
+    background-color: green;
+    color: black;
+    position: relative;
+    left: 3px;
+    bottom: 5px;
+}
+
 ul {
     list-style: none;
-    padding: 0;
+    padding: 20px;
 }
 
 .nav2 {
     display: inline-block;
     background-position: 10px;
     border-radius: 10%;
-    background-color: rgb(245, 0, 0);
+    background-color: lightskyblue;
     cursor: url(images/ch.png) 0 0, auto;
+}
+
+.nav2:hover {
+    background-color: lightgreen;
+    position: relative;
+    left: 3px;
+    bottom: 5px;
 }
 
 .nav2 a {
     background-color: black;
     color: rgb(174, 230, 249);
+    border-top-right-radius: 10%;
+    border-bottom-right-radius: 10%;
     padding-bottom: 1px;
 }
 
@@ -61,7 +86,7 @@ li:hover {
 
 .s1 {
     background-color: rgba(183, 183, 183, 0.5);
-    border-radius: 10px;
+    border-radius: 20px;
     padding-bottom: 10px;
 }
 
@@ -87,19 +112,31 @@ li:hover {
     padding-bottom: 10px;
 }
 
-footer:hover,section:hover {
+.s4:hover a {
+    color: black;
+    background-color: green;
+}
+
+footer:hover,
+section:hover {
     border: 1px solid white;
     background-color: black;
     color: green;
     border-color: green;
 }
+
 .Education {
     border-radius: 10px;
     background-color: rgba(130, 247, 247, 0.5);
 }
+
 .Education li {
     padding: 10px;
-    background-color: greenyellow ;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.Education:hover li {
+    background-color: rgba(144, 238, 144, 0.5);
 }
 
 .footer {
