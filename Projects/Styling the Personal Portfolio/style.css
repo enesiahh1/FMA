@@ -77,7 +77,8 @@ ul {
     color: rgb(174, 230, 249);
     border-top-right-radius: 10%;
     border-bottom-right-radius: 10%;
-    padding-bottom: 1px;
+    position: relative;
+    bottom: 5px;
 }
 
 li:hover {
@@ -137,6 +138,7 @@ section:hover {
 
 .Education:hover li {
     background-color: rgba(144, 238, 144, 0.5);
+    color: black;
 }
 
 .footer {
