@@ -1,0 +1,283 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 2fr 9fr;
+    font-family: "Roboto", sans-serif;
+}
+
+aside {
+    background: linear-gradient(0deg, rgba(0 , 0, 0, 0.7) , rgba(0 , 0, 0, 0.7)) , url(images/sidebar-1.jpg) ;
+    padding: 10px;
+    background-size: cover;
+    color: white;
+    font-size: 0.79em;
+}   
+
+aside h3 {
+    display: flex;
+    gap: 20px;
+    text-transform: uppercase;
+    font-weight: lighter;
+    padding: 10px 20px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.pn {
+    display: flex;
+    flex-grow: 1;
+    gap: 5px;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 9px;
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.more {
+    justify-self: end;
+
+}
+
+.dashborde {
+    background-color: red;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-left: 13px;
+    margin-top: 20px;
+    border-radius: 3px;
+}
+
+ul {
+    padding-left: 13px;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.lc {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.content {
+    background: rgb(225, 225, 225);
+    overflow-y: scroll;
+}
+
+header {
+    display: block;
+}
+
+.m1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1em;
+}
+
+.m12 {
+    gap: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 25px;
+}
+
+.ms {
+    border-radius: 50%;
+    box-shadow: rgb(92, 92, 92) 1px 1px 1px 1px;
+    background-color: white;
+    padding: 10px;
+    color: gray;
+    margin-right: 10px;
+}
+
+.sb {
+    width: 15em;
+    padding: 0.5em;
+    margin: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#sbi {
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid gray;
+    outline: none;
+}
+
+#sbi:focus {
+    border-bottom: 2px solid rgb(64, 2, 135);
+}
+
+.si {
+    width: 1.5em;
+    padding: 1em;
+}
+
+.s1 {
+    background: white;
+}
+
+.m2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+
+.notifications {
+     position: relative;
+}
+
+.nn {
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    width: 12.5px;
+    height: 12.5px;
+    position: absolute;
+    font-size: 0.75em; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3px;
+    top: -7px;
+    right: -3px;
+}
+
+.s1 {
+    background-color: white;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 20px;
+    padding: 10px;
+}
+
+.county-lists {
+    border-collapse: collapse;
+}
+
+.country-name img {
+       width: 20px;
+}
+
+.s2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 40px;
+    padding: 20px;
+}
+
+.s2d {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 5px;
+}
+
+.s2d hr {
+    width: 100%;
+    align-self: flex-end;
+}
+
+.s2d p {
+    display: flex;
+    align-items: center;
+    font-size: 0.7em;
+    color: grey;
+}
+
+.s2dd {
+    display: flex;
+    flex-direction: column;
+}
+
+.s2dd p  {
+    margin: 0;
+}
+
+.s3 {
+    padding:0 20px;
+}
+
+.s3d {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.card img {
+    width: 300px;
+    position: relative;
+    top: -20px;
+}
+
+
+width: 100%;
+height: auto;
+transition: transform 0.3s ease-in-out;
+position: absolute;
+top: 0;
+left: 0;
+
+.card p {
+    color: grey;
+}
+
+.card hr {
+    margin: 0;
+    margin-top: 100px;
+}
+
+.cp {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cp p {
+    display: flex;
+    align-items: center;
+    font-size: 0.7em;
+    color: grey;
+}
+
+.fhr {
+    width: 95%;
+    color: grey;
+}

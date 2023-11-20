@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex3</title>
+    <style>
+        .searchbar {
+            width: 15em;
+            padding: 0.5em;
+            margin: 1em;
+            border-radius: 7em;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            box-shadow: inset 0px 0px 20px lightgray;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: grey;
+        }
+        .search {
+            flex-grow: 1;
+            border: none;
+            background-color: transparent;
+            outline: none;
+            font-size: 1.2em;
+            color: inherit;
+        }
+
+        .icon {
+            width: 1.5em;
+        }
+
+        .search::placeholder {
+                color: #b6b6b6;
+        }
+    </style>
+</head>
+<body>
+    <span class="searchbar">
+        <input type="text" class="search" placeholder="Search">
+        <img src="search.png" alt="search" class="icon">
+    </span>
+</body>
+</html>

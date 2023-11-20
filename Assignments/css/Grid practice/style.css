@@ -1,0 +1,18 @@
+body{
+    margin: 0;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    column-gap: 10vw; 
+}
+
+.red{
+    background-color: lightcoral;
+    grid-row: span 1;
+    grid-column: 1 / 5;
+}
+
+.green {
+    background-color: aquamarine;
+}
