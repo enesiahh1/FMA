@@ -25,18 +25,22 @@
         </div>
         <hr>
         <nav>
-            <div class="dashborde"><span class="material-symbols-outlined">
-                    dashboard
-                </span>
-                <p>Dashborde</p>
-            </div>
             <ul>
+                <li class="red active">
+                    <div class="lc">
+                        <span class="material-symbols-outlined">
+                            dashboard
+                        </span>
+                        <p>Dashborde</p>
+                    </div>
+                </li>
                 <li>
                     <div class="lc"><span class="material-symbols-outlined">
                             image
                         </span>
                         <p>Pages</p>
-                    </div> <span class="material-symbols-outlined">
+                    </div>
+                    <span class="material-symbols-outlined">
                         expand_more
                     </span>
                 </li>
@@ -109,7 +113,7 @@
     <div class="content">
         <header>
             <div class="m1">
-                <div class="m12"><span class="material-symbols-outlined ms">
+                <div class="m12"><span class="material-symbols-outlined ms cpointer" title="See More">
                         more_vert
                     </span>
                     <p>Dashborde</p>
@@ -117,31 +121,49 @@
                 <div class="m2">
                     <span class="sb">
                         <input type="text" id="sbi" placeholder="Search">
-                        <label for="sbi"><img src="images/search.png" alt="search" class="si ms"></label>
+                        <label for="sbi"><span title="Search" class="material-symbols-outlined ms cpointer">
+                                search
+                            </span>
+                        </label>
                     </span>
-                    <span class="material-symbols-outlined ">
-                        dashboard
-                    </span>
-                    <div class="notifications">
-                        <span class="material-symbols-outlined">
-                            notifications
+                    <div class="m21">
+                        <span class="material-symbols-outlined cpointer" title="Dashborde">
+                            dashboard
                         </span>
-                        <span class="nn">5</span>
+                        <div class="notifications">
+                            <span class="material-symbols-outlined cpointer" title="Notifications">
+                                notifications
+                            </span>
+                            <span class="nn">5</span>
+                            <div class="nlisting">
+                                <p>Jhon Doe sent a message</p>
+                                <p>Someone viewed your profile</p>
+                                <p>Jhon Doe sent message</p>
+                                <p>Someone viewed your profile</p>
+                                <p>Another notification</p>
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined cpointer" title="Profile">
+                            person
+                        </span>
                     </div>
-                    <span class="material-symbols-outlined">
-                        person
+                </div>
+                <div class="m3">
+                    <span class="material-symbols-outlined cpointer" title="Menu">
+                        menu
                     </span>
-                    <br>
                 </div>
             </div>
         </header>
         <main>
-            <section class="s1">
-                <span class="material-symbols-outlined">
-                    language
-                </span>
-                <br>
-                <table class="county-lists" border="1">
+            <section class="s1 borderfix">
+                <div class="s1d">
+                    <span class="material-symbols-outlined iconFix">
+                        language
+                    </span>
+                    <h1>Global Sales by Top Locations</h1>
+                </div>
+                <table class="county-lists">
                     <tr>
                         <td class="country-name"><img src="images/usa.png" alt="usa flag" class="flag">USA
                         </td>
@@ -185,8 +207,8 @@
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </section>
             <section class="s2">
-                <div class="s2d">
-                    <span class="material-symbols-outlined">
+                <div class="s2d borderfix">
+                    <span class="material-symbols-outlined iconFix orange">
                         chair
                     </span>
                     <div class="s2dd">
@@ -198,8 +220,8 @@
                             warning
                         </span><br>Get more space</p>
                 </div>
-                <div class="s2d">
-                    <span class="material-symbols-outlined">
+                <div class="s2d borderfix">
+                    <span class="material-symbols-outlined iconFix pink">
                         bar_chart
                     </span>
                     <div class="s2dd">
@@ -211,8 +233,8 @@
                             sell
                         </span><br>Tracked from Google Analytics</p>
                 </div>
-                <div class="s2d">
-                    <span class="material-symbols-outlined">
+                <div class="s2d borderfix">
+                    <span class="material-symbols-outlined iconFix">
                         store
                     </span>
                     <div class="s2dd">
@@ -224,8 +246,8 @@
                             date_range
                         </span><br>Last 24 Hours</p>
                 </div>
-                <div class="s2d">
-                    <span class="material-symbols-outlined">
+                <div class="s2d borderfix">
+                    <span class="material-symbols-outlined iconFix blue">
                         public
                     </span>
                     <div class="s2dd">
@@ -239,12 +261,25 @@
                 </div>
             </section>
             <section class="s3">
-                <h1>Manage Listings</h1>
+                <h1 class="s3h1">Manage Listings</h1>
                 <br>
                 <div class="s3d">
                     <div class="card">
-                        <img src="images/card-1.jpeg" alt="card-1">
-                        <h1>Cozy 5 Star Apartment</h1>
+                        <div class="animation">
+                            <img src="images/card-1.jpeg" alt="card-1">
+                            <div class="ic">
+                                <span class="material-symbols-outlined cgrey">
+                                    photo_library
+                                </span>
+                                <span class="material-symbols-outlined cgreen">
+                                    edit
+                                </span>
+                                <span class="material-symbols-outlined cred">
+                                    close
+                                </span>
+                            </div>
+                        </div>
+                        <h1 class="mx">Cozy 5 Star Apartment</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci praesentium eligendi,
                             deserunt quasi exercitationem, nam sunt quis iure quod voluptate deleniti obcaecati tempore
                             facere blanditiis suscipit. Provident error.</p>
@@ -252,13 +287,26 @@
                         <div class="cp">
                             <h1>$899/night</h1>
                             <p><span class="material-symbols-outlined">
-                                location_on
-                            </span> London,UK</p>
+                                    location_on
+                                </span> London,UK</p>
                         </div>
                     </div>
                     <div class="card">
-                        <img src="images/card-2.jpeg" alt="card-2">
-                        <h1>Office Studio</h1>
+                        <div class="animation">
+                            <img src="images/card-2.jpeg" alt="card-2">
+                            <div class="ic">
+                                <span class="material-symbols-outlined cgrey">
+                                    photo_library
+                                </span>
+                                <span class="material-symbols-outlined cgreen">
+                                    edit
+                                </span>
+                                <span class="material-symbols-outlined cred">
+                                    close
+                                </span>
+                            </div>
+                        </div>
+                        <h1 class="mx">Office Studio</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci praesentium eligendi,
                             deserunt quasi exercitationem, nam sunt quis iure quod voluptate deleniti obcaecati tempore
                             facere blanditiis suscipit. Provident error.</p>
@@ -266,13 +314,26 @@
                         <div class="cp">
                             <h1>$899/night</h1>
                             <p><span class="material-symbols-outlined">
-                                location_on
-                            </span> London,UK</p>
+                                    location_on
+                                </span> London,UK</p>
                         </div>
                     </div>
                     <div class="card">
-                        <img src="images/card-3.jpeg" alt="card-3">
-                        <h1>Beautiful Castle</h1>
+                        <div class="animation">
+                            <img src="images/card-3.jpeg" alt="card-3">
+                            <div class="ic">
+                                <span class="material-symbols-outlined cgrey">
+                                    photo_library
+                                </span>
+                                <span class="material-symbols-outlined cgreen">
+                                    edit
+                                </span>
+                                <span class="material-symbols-outlined cred">
+                                    close
+                                </span>
+                            </div>
+                        </div>
+                        <h1 class="mx">Beautiful Castle</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci praesentium eligendi,
                             deserunt quasi exercitationem, nam sunt quis iure quod voluptate deleniti obcaecati tempore
                             facere blanditiis suscipit. Provident error.</p>
@@ -280,8 +341,8 @@
                         <div class="cp">
                             <h1>$899/night</h1>
                             <p><span class="material-symbols-outlined">
-                                location_on
-                            </span> London,UK</p>
+                                    location_on
+                                </span> London,UK</p>
                         </div>
                     </div>
                 </div>
@@ -289,7 +350,17 @@
         </main>
         <footer>
             <hr class="fhr">
-
+            <div class="footer">
+                <div class="footerR">
+                    <h1>Home</h1>
+                    <h1>Company</h1>
+                    <h1>porfolio</h1>
+                    <h1>blog</h1>
+                </div>
+                <div class="footerL">
+                    <p>&copy; Jhon Doe,2023</p>
+                </div>
+            </div>
         </footer>
     </div>
 </body>
