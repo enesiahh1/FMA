@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vowels and Consonants</title>
+</head>
+
+<body>
+
+    <script>
+        document.addEventListener("keydown", function (event) {
+            let keyPressed = event.key;
+            if (/[aeiouAEIOU]/.test(keyPressed)) {
+                console.log("Vowel entered: " + keyPressed);
+            } else if (/[^a-zA-Z]/.test(keyPressed)) {
+                console.log("Non-alphabetic symbol or number entered: " + keyPressed);
+            } else {
+                console.log("Consonant entered: " + keyPressed);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

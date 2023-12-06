@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Bar</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .pbc {
+            margin-inline: 1rem;
+            padding: 0.5rem;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: 0.5rem;
+            height: 100vh;
+        }
+
+        .indcator {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: grey;
+        }
+
+        .pbw {
+            flex-grow: 1;
+            position: relative;
+        }
+
+        .pb {
+            position: absolute;
+            top: 0;
+            left: -0.5rem;
+            bottom: -100px;
+            width: 0.5rem;
+            height: 0%;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pbc">
+        <span class="indcator">100%</span>
+        <div class="pbw">
+            <div id="bar" class="pb"></div>
+        </div>
+        <span class="indcator">0%</span>
+    </div>
+
+    <script>
+        let percentage = parseFloat(prompt(`What is the percentage?`))
+        if (isNaN(percentage) || percentage < 0 || percentage > 100) {
+            throw new Error(`Write a valid percentage!!!!`);
+        };
+
+        let color;
+        if (percentage < 20)
+            color = `darkred`;
+        else if (percentage < 50)
+            color = `orange`
+        else if (percentage < 80)
+            color = `yellow`
+        else if (percentage < 101)
+            color = `green`
+
+
+        let progressbar = document.getElementById(`bar`)
+        progressbar.style.backgroundColor = color;
+        progressbar.style.height = `${percentage}%`;
+        progressbar.title = `${percentage}%`;
+
+    </script>
+</body>
+
+</html>

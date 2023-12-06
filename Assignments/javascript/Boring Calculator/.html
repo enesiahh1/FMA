@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boring Calculator</title>
+</head>
+
+<body>
+    <script>
+        let value = parseFloat(prompt(`Enter a number`))
+        let calculacion = prompt(`Type what you want to do with them`)
+        let value1 = parseFloat(prompt(`Enter a second number`))
+        let answer
+        if (calculacion == `+`) {
+            answer = value + value1
+        }
+        else if (calculacion == `-`) {
+            answer = value - value1
+        }
+        else if (calculacion == `*`) {
+            answer = value * value1
+        }
+        else if (calculacion == `/`) {
+            if (value1 == 0) {
+                throw new Error(`!!!Can not dived by 0!!!`)
+            }
+            answer = value / value1
+        }
+        else {
+            throw new Error(`!!!Unkown operation!!!`)
+        }
+
+        alert(`answer is ${answer}`)
+    </script>
+</body>
+
+</html>

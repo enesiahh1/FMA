@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Largest of three numbers</title>
+</head>
+
+<body>
+    <script>
+        let a = parseFloat(prompt(`Enter a number`))
+        let b = parseFloat(prompt(`Enter a number`))
+        let c = parseFloat(prompt(`Enter a number`))
+        if (a < b) {
+            a = b
+        }
+        if (a < c) {
+            a = c
+        }
+        alert(`${a} is the biggest number`)
+    </script>
+</body>
+
+</html>

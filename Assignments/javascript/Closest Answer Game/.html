@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closest Answer Game</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin: 0;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 50px;
+        }
+
+        div h1,
+        div p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .winner {
+            background-color: green;
+        }
+
+        .loser {
+            background-color: red;
+        }
+
+        .draw {
+            background-color: orange;
+        }
+
+
+        #mc {
+            background: black;
+            color: white;
+            width: 50%;
+            padding: 10px 0;
+        }
+
+        .vs {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="mc">
+        <div id="sc"></div>
+        <div class="vs">
+            <div id="p1"></div>
+            <h3>VS</h3>
+            <div id="p2"></div>
+        </div>
+    </div>
+    <script>
+        let answer = Math.floor(Math.random() * 20) + 1;
+        let p1 = parseInt(prompt(`Enter a number between 1-20`))
+        let p2 = parseInt(prompt(`Enter a number between 1-20`))
+
+        if (isNaN(p1) || isNaN(p2))
+            throw new Error(`Enter only numbers!!!`)
+
+        if ((p1 < 0 || p2 < 0) || (p1 > 20 || p2 > 20)) {
+            throw new Error(`Enter a valid number!!!`)
+        }
+
+        let p1d = Math.abs(answer - p1)
+        let p2d = Math.abs(answer - p2)
+
+
+        let winner;
+        let resultp1, resultp2
+        if (p1d < p2d) {
+            resultp1 = `winner`
+            resultp2 = `loser`
+        }
+        else if (p1d > p2d) {
+            resultp1 = `loser`
+            resultp2 = `winner`
+        }
+        else {
+            resultp1 = `draw`
+            resultp2 = `draw`
+        }
+
+        let sc = document.getElementById(`sc`);
+        sc.innerHTML = `<h1>The number is ${answer}</h1>`
+        let p1hd = document.getElementById(`p1`);
+        p1hd.innerHTML = `<div class='${resultp1}'
+        <p>Player1</p>
+                        <h1>${p1}</h1> </div>  `
+        let p2hd = document.getElementById(`p2`);
+        p2hd.innerHTML = `<div class='${resultp2}'
+        <p>Player2</p>
+                        <h1>${p2}</h1>  </div> `
+
+    </script>
+</body>
+
+</html>
