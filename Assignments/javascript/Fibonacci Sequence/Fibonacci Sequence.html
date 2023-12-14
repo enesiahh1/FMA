@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Sequence</title>
+</head>
+
+<body>
+    <script>
+        let n1 = parseInt(prompt(`Enter a number to see the Fibonacci Sequence:`));
+        let resultString = "";
+
+        let a = 1;
+        let b = 1;
+
+        resultString += a + ", ";
+        resultString += b + ", ";
+
+        for (let i = 2; i < n1; i++) {
+            let nextNumber = a + b;
+            resultString += nextNumber;
+
+            if (i < n1 - 1) {
+                resultString += ", ";
+            }
+
+            a = b;
+            b = nextNumber;
+        }
+
+        console.log(resultString);
+
+    </script>
+</body>
+
+</html>

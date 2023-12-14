@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maximum of 3 tries</title>
+</head>
+
+<body>
+    <script>
+        let pass = `12341234`;
+        let trys = 3;
+        let Guess;
+        do {
+            Guess = prompt(`Enter the password:`);
+            trys--;
+            if (trys == 1) {
+                alert(`Wrong you have ${trys} try left.`);
+            }
+            if (Guess !== pass && trys > 1) {
+                alert(`Wrong you have ${trys} tries left.`);
+            }
+        }
+        while (trys > 0 && Guess !== pass);
+
+        if (Guess == pass) {
+            alert(`Welcome`);
+        } else {
+            alert(`You cant try anymore.`)
+        }
+    </script>
+</body>
+
+</html>

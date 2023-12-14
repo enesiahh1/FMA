@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numbers from 1 to n</title>
+</head>
+
+<body>
+    <script>
+        let number = parseFloat(prompt(`Put in a number from 1 to 100:`));
+        let n1 = 1;
+        while (n1 <= number) {
+            console.log(n1);
+            n1++;
+        }
+        let result = ``;
+        n1 = 1
+        while (n1 <= number) {
+            result += n1;
+            if (n1 < number) {
+                result += ", ";
+            }
+            n1++;
+        }
+        console.log(result);
+
+    </script>
+</body>
+
+</html>

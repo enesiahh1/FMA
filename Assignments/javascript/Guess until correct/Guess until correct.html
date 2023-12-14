@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess until correct</title>
+</head>
+
+<body>
+    <script>
+        let answer = Math.floor(Math.random() * 6) + 1;
+        let Guess;
+        let trys = 0;
+        do {
+            Guess = parseInt(prompt(`Guess the number from 1 to 6:`));
+            trys++;
+
+        } while (Guess !== answer)
+        if (trys == 1) {
+            alert(`You got it in the first try.`)
+        }
+        else {
+            alert(`You got it in ${trys} tries.`)
+        }
+    </script>
+</body>
+
+</html>

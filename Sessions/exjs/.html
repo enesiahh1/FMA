@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exjs</title>
+</head>
+
+<body>
+    <label for="" id="em"></label><br>
+
+    <input type="text" id="in">
+    <script>
+        let lang = prompt(`What languge do you speak?`);
+        let h1;
+        let pl;
+        if (lang == `sq`) {
+            h1 = `Emri dhe Mbiemri:`
+            pl = `Filan Fisteku`
+        }
+        else if (lang == `en`) {
+            h1 = `Name and Surname:`
+            pl = `John doe`
+        }
+        else if (lang == `de`) {
+            h1 = `Vorname und Surname:`
+            pl = `Max Mustermann`
+        }
+        else {
+            throw new Error(`Choose another languge`)
+        }
+
+        let hh1 = document.getElementById(`em`);
+        hh1.innerHTML = h1
+        let In = document.getElementById(`in`);
+        In.placeholder = pl
+
+    </script>
+</body>
+
+</html>
