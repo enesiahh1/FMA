@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function hw() {
+            for (i = 1; i < 11; i++) {
+                console.log(`Hello world`);
+            }
+        };
+
+        hw();
+
+        let inputs = prompt(`Type something to put on the console`);
+
+        function string(inputs) {
+            return `You wanted to type this in the console:${inputs}`;
+        };
+
+        inputs = string(inputs);
+        console.log(inputs)
+
+        let distance = parseFloat(prompt(`Type in the distance:`))
+        function km(distance) {
+            return `It is ${distance / 1.6} miles away`
+        };
+
+        distance = km(distance);
+        console.log(distance);
+
+        let radius = parseFloat(prompt(`What is the radius of the cricle?`))
+        function rf(radius) {
+            return `The area is ${3.14 * radius ** 2} `
+        };
+
+        radius = rf(radius);
+        console.log(radius);
+
+        let name = prompt(`what is your name`)
+        let sname = prompt(`what is your surname`);
+
+
+        function info(name, sname) {
+            return `Welcome, ${name} ${sname}`
+        }
+        let greeting = info(name, sname)
+        console.log(greeting)
+
+        let age = parseInt(prompt(`How old are you ?`));
+        function isWorkingCitizen(age) {
+            if (age < 18 || age > 65) {
+                return `You are not a working citizen.`
+            } else {
+                return `You are a working citizen.`
+            }
+        }
+
+        let iwc = isWorkingCitizen(age);
+        console.log(iwc);
+
+        let number = parseInt(prompt("Enter a number:"));
+        function eoo(number) {
+            if (number % 2 === 0) {
+                return number + " is an even number.";
+            } else {
+                return number + " is an odd number.";
+            }
+        };
+
+        let eoro = eoo(number);
+        console.log(eoro);
+
+
+    </script>
+
+</body>
+
+</html>

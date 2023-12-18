@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Spaghetti</title>
+</head>
+
+<body>
+    <script>
+        let text = `   hello,dolly!`;
+        let trim = text.trim();
+        let flu = trim.charAt(0).toUpperCase() + trim.slice(1);
+        console.log(flu);
+
+        let text2 = `05:36PM`
+        let n1 = text2.substring(0, 2);
+        let n2 = text2.substring(3, 5);
+        let string = text2.substring(5);
+        console.log(n1);
+        console.log(n2);
+        console.log(string);
+
+        let info = `New York, 15°C`;
+        let info1 = `Ottawa, -4°C`;
+        let info2 = `Prishtina, 50°F`;
+        let city = info.split(`,`)[0];
+        let tn = info.split(`,`)[1].trim();
+        console.log(city);
+        console.log(tn);
+        let city1 = info1.split(`,`)[0];
+        let tn1 = info1.split(`,`)[1].trim();
+        console.log(city1);
+        console.log(tn1);
+        let city2 = info2.split(`,`)[0];
+        let tn2 = info2.split(`,`)[1].trim();
+        console.log(city2);
+        console.log(tn2);
+    </script>
+</body>
+
+</html>
