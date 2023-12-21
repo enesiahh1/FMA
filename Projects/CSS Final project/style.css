@@ -263,7 +263,6 @@ header {
 
 .s1 {
     background-color: white;
-    position: relative;
     display: grid;
     grid-template-columns: 0.4fr 1fr;
     margin: 20px;
