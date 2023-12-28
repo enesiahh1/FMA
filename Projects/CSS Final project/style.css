@@ -83,7 +83,7 @@ aside h3 {
     align-items: center;
 }
 
-.pn {
+.profileLeft {
     display: flex;
     flex-grow: 1;
     gap: 5px;
@@ -114,7 +114,7 @@ aside h3 {
 }
 
 ul {
-    padding-left: 13px;
+    padding-left: 0.5px;
 }
 
 li {
@@ -125,7 +125,7 @@ li {
     padding-left: 13px;
 }
 
-.lc {
+.listContent {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -147,14 +147,14 @@ header {
     display: block;
 }
 
-.m1 {
+.headerRight {
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 1em;
 }
 
-.m12 {
+.headerRightDiv {
     gap: 10px;
     display: flex;
     flex-direction: row;
@@ -163,16 +163,17 @@ header {
     padding-left: 25px;
 }
 
-.ms {
+.iconHover {
     border-radius: 50%;
     box-shadow: rgb(198, 198, 198) 1px 1px 1px 1px;
     background-color: white;
     padding: 10px;
     color: gray;
     margin-right: 10px;
+    font-size: 20px !important;
 }
 
-.ms:hover {
+.iconHover:hover {
     box-shadow: rgb(198, 198, 198) 3px 3px 3px 3px;
 }
 
@@ -180,32 +181,33 @@ header {
     cursor: pointer;
 }
 
-.sb {
+.searchBar {
     padding: 0.5em;
     margin: 1em;
+    gap: 4px;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-#sbi {
+#searchBarInput {
     background: transparent;
     border: 0;
     border-bottom: 2px solid gray;
     outline: none;
 }
 
-#sbi:focus {
+#searchBarInput:focus {
     border-bottom: 2px solid rgb(64, 2, 135);
 }
 
-.m2 {
+.headerLeft {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.m21 {
+.headerLeftIcons {
     display: flex;
     justify-content: space-around;
     gap: 30px;
@@ -216,7 +218,7 @@ header {
     position: relative;
 }
 
-.notifications:hover .nlisting {
+.notifications:hover .notificationsListing {
     display: block;
     position: absolute;
     top: 5px;
@@ -225,23 +227,23 @@ header {
     padding: 5px;
 }
 
-.nlisting {
+.notificationsListing {
     display: none;
     width: 250px;
     z-index: 2;
 }
 
-.nlisting p {
+.notificationsListing p {
     padding: 10px;
     margin: 5px;
 }
 
-.nlisting p:hover {
+.notificationsListing p:hover {
     background: red;
     color: white;
 }
 
-.nn {
+.notificationsNumber {
     border-radius: 50%;
     background-color: red;
     color: white;
@@ -257,11 +259,11 @@ header {
     right: -3px;
 }
 
-.m3 {
+.TabletPhoneIcon {
     display: none;
 }
 
-.s1 {
+.section1 {
     background-color: white;
     display: grid;
     grid-template-columns: 0.4fr 1fr;
@@ -270,14 +272,14 @@ header {
     gap: 5px;
 }
 
-.s1d {
+.section1div {
     grid-column: 1/3;
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-.s1d h1 {
+.section1div h1 {
     position: relative;
     top: -20px;
     left: 10px;
@@ -296,18 +298,22 @@ header {
     border-bottom: 2px solid rgb(214, 214, 214);
 }
 
+.county-lists :last-child {
+    border-bottom: 0px;
+}
+
 .country-name img {
     width: 20px;
 
     margin-right: 5px;
 }
 
-.s1 iframe {
+.section1 iframe {
     width: 100%;
     height: 15rem;
 }
 
-.s2 {
+.section2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -315,7 +321,7 @@ header {
     padding: 20px;
 }
 
-.s2d {
+.section2div {
     background-color: white;
     display: flex;
     justify-content: space-between;
@@ -323,42 +329,55 @@ header {
     padding: 10px;
 }
 
-.s2d hr {
+.section2div hr {
     width: 100%;
     align-self: flex-end;
 }
 
-.s2d p {
+.section2div p {
     display: flex;
     align-items: center;
     font-size: .6em;
     color: grey;
 }
 
-.s2dd {
+.section2divInsideDiv {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.s2dd h1 {
+.section2divInsideDiv h1 {
     margin: 10px 0 0 0;
 }
 
-.s2dd p {
+.section2divInsideDiv p {
     margin: 0;
+    font-size: 13px;
 }
 
-.s3 {
+.listingIconFix {
+    font-size: 14px !important;
+    position: relative;
+    bottom: -3px;
+}
+
+.listingIconFix2 {
+    font-size: 14px !important;
+    position: relative;
+    bottom: -5px;
+}
+
+.section3 {
     padding: 0 20px;
 }
 
-.s3h1 {
-    margin-bottom: 50px;
+.section3h1 {
+    margin-bottom: 70px;
 }
 
-.s3d {
+.section3div {
     display: flex;
     justify-content: space-around;
     gap: 20px;
@@ -372,6 +391,10 @@ header {
     border-radius: 5px;
 }
 
+.animation {
+    margin: -20px 0;
+}
+
 .animation img {
     width: 300px;
     position: relative;
@@ -380,7 +403,7 @@ header {
     border-radius: 5px;
 }
 
-.ic {
+.animationIcons {
     position: relative;
     top: -3rem;
     visibility: hidden;
@@ -395,35 +418,40 @@ header {
     top: -60px;
 }
 
-.animation:hover .ic {
+.animation:hover .animationIcons {
     visibility: visible;
 }
 
-.mx {
+.cardH1 {
     margin-top: 0;
 }
 
 .card p {
     color: grey;
+    margin-bottom: 50px;
+}
+
+.cardBottomP {
+    margin-bottom: 0px !important;
 }
 
 .card hr {
     margin: 0;
 }
 
-.cp {
+.cardBottom {
     display: flex;
     justify-content: space-between;
 }
 
-.cp p {
+.cardBottom p {
     display: flex;
     align-items: center;
     font-size: 0.7em;
     color: grey;
 }
 
-.fhr {
+.footerHr {
     width: 95%;
     color: grey;
     margin-top: 30px;
@@ -463,44 +491,49 @@ header {
         margin-bottom: 100px;
     }
 
-    .m12 span {
+    .headerRightDiv span {
         display: none;
     }
 
-    .m2 {
+    .headerLeft {
         display: none;
     }
 
-    .m3 {
+    .TabletPhoneIcon {
         display: block;
     }
 
-    .s1 {
+    .section1 {
         display: flex;
         flex-direction: column;
         gap: 30px;
     }
 
-    .s1 iframe {
+    .section1 iframe {
         height: 350px;
     }
 
-    .s2 {
+    .section2 {
         margin-bottom: 70px;
     }
 
-    .s3d {
+    .section3div {
         flex-direction: column;
+        gap: 70px;
     }
 
     .animation img {
         width: 90%;
     }
 
+    .animation:hover img {
+        top: -45px;
+    }
+
 }
 
 @media only screen and (max-width: 600px) {
-    .s2 {
+    .section2 {
         display: flex;
         flex-direction: column;
     }
