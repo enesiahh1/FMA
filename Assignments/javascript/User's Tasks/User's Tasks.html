@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+    <style>
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin: 20px;
+            text-align: center;
+            background-color: blue;
+            color: white;
+        }
+
+
+
+        #taskInput {
+            margin-bottom: 10px;
+        }
+
+        #taskList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .taskItem {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="currentDate"></h1>
+    <ul id="taskList"></ul>
+
+    <script>
+        function getCurrentDate() {
+            let now = new Date();
+            let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            return now.toLocaleDateString('en-US', options);
+        }
+
+        function promptForTask() {
+            let taskList = document.getElementById('taskList');
+            let currentDate = document.getElementById('currentDate');
+
+            currentDate.textContent = 'Today: ' + getCurrentDate();
+
+            while (true) {
+                let task = prompt('Enter your task for the day (or leave it empty to finish):');
+
+                if (task === null || task === '') {
+                    break;
+                }
+
+                let taskItem = document.createElement('li');
+                taskItem.className = 'taskItem';
+                taskItem.textContent = task;
+                taskList.appendChild(taskItem);
+            }
+        }
+
+        promptForTask();
+    </script>
+</body>
+
+</html>

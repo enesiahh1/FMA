@@ -1,7 +1,6 @@
 let title = document.title
 let change = document.querySelector("link[rel='icon']");
-let save = document.querySelector("link[rel='icon']");
-let href = save ? save.href : null;
+let href = change.href;
 let bell = `https://cdn-icons-png.flaticon.com/512/1827/1827272.png`
 let interid
 function startnotifacion(input) {

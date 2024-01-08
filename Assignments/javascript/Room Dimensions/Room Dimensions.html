@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your room</title>
+</head>
+<style>
+    body {
+        background-color: white;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+
+    #top {
+        position: absolute;
+        left: 50%;
+        top: 7%;
+    }
+
+    #right {
+        position: absolute;
+        right: 10%;
+        bottom: 40%;
+        transform: rotate(90deg);
+    }
+
+    #bot {
+        position: absolute;
+        bottom: -3%;
+        left: 50%;
+    }
+
+    #left {
+        position: absolute;
+        left: 14%;
+        bottom: 40%;
+        transform: rotate(-90deg);
+    }
+
+    div {
+        border: 3px solid black;
+        background-color: blue;
+        padding: 10rem 20rem;
+    }
+</style>
+
+<body>
+
+    <div>
+        <h1 id="Area"></h1>
+        <p id="top">10</p>
+        <p id="bot">10</p>
+        <p id="right">10</p>
+        <p id="left">10</p>
+        <h1 id="perimeter"></h1>
+    </div>
+    <script>
+        let firstValue = parseFloat(prompt(`Enter the first value:`));
+        let secondValue = parseFloat(prompt(`Enter the second value:`));
+
+        let topText = document.getElementById(`top`);
+        let botText = document.getElementById(`bot`);
+        let rightText = document.getElementById(`right`);
+        let leftText = document.getElementById(`left`);
+        let Area = document.getElementById(`Area`);
+        let perimeter = document.getElementById(`perimeter`);
+
+
+
+        topText.textContent = firstValue + `m`;
+        botText.textContent = firstValue + `m`;
+        rightText.textContent = secondValue + `m`;
+        leftText.textContent = secondValue + `m`;
+        Area.textContent = `Area :` + firstValue * secondValue + `m * m`;
+        perimeter.textContent = `Perimeter:` + 2 * (firstValue + secondValue) + `m`;
+
+    </script>
+</body>
+
+</html>

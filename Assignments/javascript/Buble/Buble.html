@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+        }
+
+        .bubble {
+            border-radius: 50%;
+            position: fixed;
+            opacity: 0.7;
+        }
+
+        @keyframes moveBubble {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(50px, 50px);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        let randomTime = function (min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        };
+        let randomNumber = function () { return Math.floor(Math.random() * 101); };
+        let randomColor = function () {
+            return `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+        };
+        let createBubble = function () {
+            let newDiv = document.createElement('div');
+            newDiv.classList.add('bubble');
+            newDiv.style.width = randomNumber() + 'px';
+            newDiv.style.height = newDiv.style.width
+            newDiv.style.backgroundColor = randomColor();
+            newDiv.style.top = randomNumber() + `%`;
+            newDiv.style.left = randomNumber() + `%`;
+            newDiv.style.animation = `moveBubble ${randomTime(5, 9)}s ${Math.random() < 0.5 ? 'reverse' : 'normal'} infinite`;
+            document.body.appendChild(newDiv);
+        }
+
+        for (let i = 0; i < 301; i++) {
+            createBubble();
+        }
+    </script>
+</body>
+
+</html>
