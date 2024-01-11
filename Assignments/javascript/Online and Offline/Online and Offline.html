@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Popup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #offline-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #e74c3c;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="offline-popup">You are offline, please wait until you are reconnected</div>
+
+    <script>
+        const offlinePopup = document.getElementById('offline-popup');
+        window.addEventListener('offline', () => offlinePopup.style.display = 'block');
+        window.addEventListener('online', () => offlinePopup.style.display = 'none');
+    </script>
+
+</body>
+
+</html>

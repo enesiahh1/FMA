@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Textbox</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+        }
+
+        #custom-textbox {
+            width: 300px;
+            max-height: 30px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow-y: hidden;
+            background-color: black;
+            color: white;
+            transition: max-height 0.3s ease;
+        }
+
+        #custom-textbox::before {
+            content: attr(placeholder);
+            color: #999;
+        }
+
+        #custom-textbox[placeholder-hidden]::before {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="custom-textbox" contenteditable="true" placeholder="Type here..."></div>
+
+    <script>
+        const customTextbox = document.getElementById('custom-textbox');
+
+        customTextbox.addEventListener('input', function () {
+            const isEmpty = customTextbox.textContent.trim() === '';
+            customTextbox.setAttribute('placeholder-hidden', !isEmpty);
+            customTextbox.style.maxHeight = 'none';
+            if (isEmpty) {
+                customTextbox.removeAttribute('placeholder-hidden');
+            } else {
+                customTextbox.setAttribute('placeholder-hidden', true);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

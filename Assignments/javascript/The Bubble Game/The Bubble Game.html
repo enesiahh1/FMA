@@ -4,17 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bubble</title>
+    <title>Poppable Bubbles</title>
     <style>
         body {
             margin: 0;
             height: 100vh;
+            overflow: hidden;
         }
 
         .bubble {
             border-radius: 50%;
             position: fixed;
             opacity: 0.7;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            cursor: pointer;
         }
 
         @keyframes moveBubble {
@@ -30,6 +33,20 @@
                 transform: translate(0, 0);
             }
         }
+
+        @keyframes popBubble {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(0);
+            }
+        }
     </style>
 </head>
 
@@ -38,21 +55,46 @@
         let randomTime = function (min, max) {
             return Math.floor(Math.random() * (max - min + 1) + min);
         };
-        let randomNumber = function () { return Math.floor(Math.random() * 101); };
+        let randomNumber = function () {
+            return Math.floor(Math.random() * 101);
+        };
         let randomColor = function () {
             return `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
         };
+
+        let bubbleContainer = document.body;
+
         let createBubble = function () {
             let newDiv = document.createElement('div');
             newDiv.classList.add('bubble');
             newDiv.style.width = randomNumber() + 20 + 'px';
-            newDiv.style.height = newDiv.style.width
+            newDiv.style.height = newDiv.style.width;
             newDiv.style.backgroundColor = randomColor();
             newDiv.style.top = randomNumber() + `%`;
             newDiv.style.left = randomNumber() + `%`;
             newDiv.style.animation = `moveBubble ${randomTime(5, 9)}s ${Math.random() < 0.5 ? 'reverse' : 'normal'} infinite`;
-            document.body.appendChild(newDiv);
-        }
+
+            newDiv.addEventListener('click', function () {
+                popBubble(newDiv);
+            });
+
+            bubbleContainer.appendChild(newDiv);
+        };
+
+        let popBubble = function (bubble) {
+            bubble.style.animation = 'popBubble 0.5s ease-out';
+            setTimeout(() => {
+                bubble.remove();
+                checkWin();
+            }, 500);
+        };
+
+        let checkWin = function () {
+            let bubbles = document.querySelectorAll('.bubble');
+            if (bubbles.length === 0) {
+                alert('Congratulations! You popped all the bubbles and won the game!');
+            }
+        };
 
         for (let i = 0; i < 301; i++) {
             createBubble();
