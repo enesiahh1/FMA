@@ -45,10 +45,10 @@
     <div id="custom-textbox" contenteditable="true" placeholder="Type here..."></div>
 
     <script>
-        const customTextbox = document.getElementById('custom-textbox');
+        let customTextbox = document.getElementById('custom-textbox');
 
         customTextbox.addEventListener('input', function () {
-            const isEmpty = customTextbox.textContent.trim() === '';
+            let isEmpty = customTextbox.textContent.trim() === '';
             customTextbox.setAttribute('placeholder-hidden', !isEmpty);
             customTextbox.style.maxHeight = 'none';
             if (isEmpty) {
