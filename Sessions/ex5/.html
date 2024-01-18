@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+        }
+
+        #input {
+            rotate: -90deg;
+            position: absolute;
+            right: 0;
+        }
+
+        p {
+            font-size: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt doloribus debitis magni optio odio
+        nesciunt!
+        Maxime cumque temporibus accusantium repellendus, eaque facilis, ad vel perspiciatis voluptas esse blanditiis
+        nulla quibusdam.</p>
+    <input type="range" id="input" min="10" max="40" value="16">
+
+    <script>
+        let input = document.getElementById(`input`);
+
+        let text = document.getElementById(`text`);
+
+        input.addEventListener(`input`, () => {
+            let value = input.value;
+            text.style.fontSize = value + `px`;
+        })
+    </script>
+</body>
+
+</html>

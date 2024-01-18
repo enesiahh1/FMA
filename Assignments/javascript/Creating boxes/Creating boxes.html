@@ -30,6 +30,9 @@
         });
 
         function createBox(event) {
+            if (event.target.tagName == `div`) {
+                return
+            }
             const box = document.createElement('div');
             box.classList.add('box');
             setPosition(box, event.clientX, event.clientY);

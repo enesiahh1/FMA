@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functional stopwatch</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            overflow-y: scroll;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #time {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #timejs {
+            font-size: 75px;
+        }
+
+        #stats {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        #stats div {
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            border-bottom: 2px solid gray;
+        }
+
+        .stats div {
+            display: flex;
+            justify-content: space-around;
+            color: rgb(59, 59, 59);
+            border-bottom: 2px solid rgb(59, 59, 59);
+        }
+
+        #buttons {
+            bottom: 0;
+            padding-top: 20px;
+        }
+
+        #startStop {
+            background-color: green;
+        }
+
+        #lapReset {
+            background-color: rgb(59, 59, 59);
+            color: rgb(166, 166, 166);
+            opacity: 0.2;
+        }
+
+        .button {
+            width: 100px;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="time">
+        <p id="timejs">00:00,00</p>
+        <div id="stats">
+            <div>
+                <p>Lap No.</p>
+                <p>Split</p>
+                <p>Total</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="buttons">
+        <button id="lapReset" class="button">Lap</button>
+        <button id="startStop" class="button">Start</button>
+    </div>
+    <script>
+        let time = document.getElementById(`timejs`);
+        let stats = document.getElementById(`stats`);
+        let lapReset = document.getElementById(`lapReset`);
+        let startStop = document.getElementById(`startStop`);
+
+        let startTime = 0;
+        let elapsedTime = 0;
+        let currentTime = 0;
+        let paused = true;
+        let intervalId;
+        let ms = 0;
+        let mins = 0;
+        let secs = 0;
+        let lapNumber = 0;
+        let oldLapTime = 0;
+        let laps = [];
+        let arrayEmty = true;
+
+
+        function reset() {
+            clearInterval(intervalId);
+            elapsedTime = 0;
+            lapNumber = 0;
+            startStop.textContent = `Start`;
+            startStop.style.backgroundColor = `green`;
+            lapReset.style.opacity = `0.2`;
+            lapReset.textContent = `Lap`;
+            time.textContent = `00:00,00`;
+
+
+            stats.innerHTML = '<div><p>Lap No.</p><p>Split</p><p>Total</p></div>';
+            lapsContainer.innerHTML = '';
+        }
+
+        let result = laps.reduce((acc, obj) => {
+            acc.largest = Math.max(acc.largest, obj.value);
+            acc.smallest = Math.min(acc.smallest, obj.value);
+
+            return acc;
+        }, { largest: Number.NEGATIVE_INFINITY, smallest: Number.POSITIVE_INFINITY });
+
+
+        function recordLap() {
+            let totalTime = elapsedTime;
+            let newLapTime = totalTime;
+            lapNumber++;
+
+            if (!arrayEmty) {
+                let lastObject = laps[laps.length - 1];
+                let lastLap = lastObject.totalp;
+                let newLapTime = totalTime - lastLap;
+                console.log(`${formatTime(newLapTime)}`);
+                laps.push({
+                    lapsp: `Lap ${lapNumber}`,
+                    splitp: newLapTime,
+                    totalp: totalTime
+                });
+
+                let newDiv = document.createElement('div');
+                newDiv.innerHTML = `<p>Lap ${lapNumber}</p><p>${formatTime(newLapTime)}</p><p>${formatTime(totalTime)}</p>`;
+                newDiv.classList.add('stats');
+                stats.appendChild(newDiv);
+                console.log(laps);
+
+                displayTime = time.textContent;
+
+
+                let result = laps.reduce((acc, obj) => {
+                    acc.largest = Math.max(acc.largest, obj.value);
+                    acc.smallest = Math.min(acc.smallest, obj.value);
+
+                    return acc;
+                }, { largest: Number.NEGATIVE_INFINITY, smallest: Number.POSITIVE_INFINITY });
+
+                // Check if the displayed time corresponds to the smallest or largest number
+                if (displayTime === formatTime(result.smallest)) {
+                    time.style.color = 'green';  // Make smallest number green
+                } else if (displayTime === formatTime(result.largest)) {
+                    time.style.color = 'red';    // Make largest number red
+                } else {
+                    time.style.color = 'white';  // Default color for other times
+                }
+
+                console.log(result.smallest, result.largest);
+
+
+            } else {
+                laps.push({
+                    lapsp: `Lap ${lapNumber}`,
+                    splitp: newLapTime,
+                    totalp: totalTime
+                });
+                arrayEmty = false;
+
+                let newDiv = document.createElement('div');
+                newDiv.innerHTML = `<p>Lap ${lapNumber}</p><p>${formatTime(totalTime)}</p><p>${formatTime(totalTime)}</p>`;
+                newDiv.classList.add('stats');
+                stats.appendChild(newDiv);
+            }
+        }
+
+
+        function formatTime(milliseconds) {
+            let totalSecs = Math.floor(milliseconds / 1000);
+            let mins = Math.floor(totalSecs / 60);
+            let secs = totalSecs % 60;
+            let millis = milliseconds % 1000;
+
+            return `${pad(mins)}:${pad(secs)},${millis}`;
+        }
+
+        lapReset.addEventListener(`click`, () => {
+            if (paused) {
+                reset();
+            } else {
+                recordLap();
+            }
+        });
+        startStop.addEventListener(`click`, () => {
+            if (paused) {
+                paused = false;
+                startTime = Date.now() - elapsedTime;
+                intervalId = setInterval(updateTime, 75);
+                startStop.textContent = `Stop`;
+                startStop.style.backgroundColor = `red`
+                lapReset.style.opacity = `1`;
+                lapReset.textContent = `Lap`;
+            } else {
+                paused = true;
+                elapsedTime = Date.now() - startTime;
+                clearInterval(intervalId);
+                startStop.textContent = `Start`;
+                startStop.style.backgroundColor = `green`;
+                lapReset.textContent = `Reset`;
+            }
+        });
+
+        function updateTime() {
+            elapsedTime = Date.now() - startTime;
+
+            secs = Math.floor((elapsedTime / 1000) % 60);
+            mins = Math.floor((elapsedTime / (1000 * 60)) % 60);
+            ms = elapsedTime % 100;
+
+            secs = pad(secs);
+            mins = pad(mins);
+            ms = pad(ms);
+
+            time.textContent = `${mins}:${secs},${ms}`
+
+
+        }
+        function pad(unit) {
+            let value = ((`0`) + unit).length > 2 ? unit : `0` + unit;
+            pad2(value)
+            return value
+        }
+
+        function pad2(unit) {
+            return (`0` + unit).slice(0, 2);
+        }
+
+
+    </script>
+</body>
+
+</html>
