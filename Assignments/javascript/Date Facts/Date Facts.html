@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Facts</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url(background.jpg);
+            color: green;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #container {
+            text-align: center;
+            background-color: black;
+            color: green;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90vw;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        button {
+            padding: 10px;
+            background-color: green;
+            color: black;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border: 2px solid transparent;
+        }
+
+        button:hover {
+            background-color: lightgreen;
+            border-color: green;
+            cursor: pointer;
+        }
+
+        #output {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .fact {
+            opacity: 0;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            white-space: pre-line;
+            transition: opacity 0.5s ease-in-out;
+            background-color: black;
+            color: green;
+        }
+
+        .fact.show {
+            opacity: 1;
+        }
+
+        .typing-animation {
+            overflow: hidden;
+            white-space: wrap;
+            margin: 0 auto;
+            font-size: 18px;
+            display: inline-block;
+            vertical-align: bottom;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        input {
+            background-color: green;
+            outline: none;
+            transition: background-color 0.5s;
+        }
+
+        input:focus {
+            background-color: lightgreen;
+            border: 2px solid green;
+        }
+
+        label {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h2>Birthday Facts</h2>
+        <div>
+            <label for="date">Choose your birthday:</label>
+            <input type="date" name="Birthday" id="date">
+            <button onclick="getBirthdayFacts()">Get Facts</button>
+        </div>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        async function fetchBirthdayFact(date) {
+            const formattedDate = formatDate(date);
+            const url = `https://numbersapi.p.rapidapi.com/${formattedDate}/date?fragment=true&json=true`;
+            const options = {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': 'e4d453d878msh71e8e2aa317c8dfp1bb741jsndcc2e0eb6623',
+                    'X-RapidAPI-Host': 'numbersapi.p.rapidapi.com'
+                }
+            };
+            try {
+                const response = await fetch(url, options);
+                const result = await response.json();
+                return result;
+            } catch (error) {
+                console.error(error);
+                throw new Error('Failed to fetch data. Please try again.');
+                alert(`A error was detected check your console log!!!`);
+            }
+        }
+
+        function formatDate(date) {
+            const parts = date.split('-');
+            const year = parts[0];
+            const month = parts[1];
+            const day = parts[2];
+            return `${month}/${day}`;
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function typeText(element, text) {
+            for (let char of text) {
+                element.innerHTML += char;
+                await sleep(20);
+            }
+        }
+
+        async function getBirthdayFacts() {
+            let dateInput = document.getElementById('date');
+            let date = dateInput.value;
+
+            try {
+                let outputElement = document.getElementById('output');
+                outputElement.innerHTML = '';
+
+                for (let i = 0; i < 3; i++) {
+                    let fact = await fetchBirthdayFact(date);
+
+                    let factElement = document.createElement('div');
+                    factElement.classList.add('fact');
+                    outputElement.appendChild(factElement);
+
+                    let typingAnimation = document.createElement('span');
+                    typingAnimation.classList.add('typing-animation');
+                    factElement.appendChild(typingAnimation);
+
+                    factElement.classList.add('show');
+
+                    await typeText(typingAnimation, `Fact ${i + 1} for this date: ${fact.text}.`);
+                }
+            } catch (error) {
+                let errorElement = document.getElementById('output');
+                errorElement.innerHTML = `<p class="error">${error.message}</p>`;
+                alert(`A error was detected check your console log!!!`);
+            }
+        }
+    </script>
+</body>
+
+</html>
