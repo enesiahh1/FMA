@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using Local Storage</title>
+    <style>
+        body {
+            background-color: white;
+            color: black;
+            transition: 1.5s ease;
+        }
+
+        * {
+            background-color: inherit;
+            color: inherit;
+        }
+    </style>
+</head>
+
+<body id="page">
+    <label for="dita/nata">Dark mode</label>
+    <input type="checkbox" id="dita/nata">
+    <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, omnis?</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto eius adipisci placeat officia, quos
+        consequuntur fuga perspiciatis illo mollitia ducimus autem porro modi aperiam, saepe sint quo earum cupiditate
+        excepturi! Numquam labore velit enim, quod dolorum ex magni assumenda eum odio vitae eos, dolore soluta
+        voluptatibus? Voluptas perferendis nihil neque aliquam nemo laudantium iusto ut nisi. Tenetur dicta eligendi
+        natus maiores numquam ea aut ratione autem eius possimus eveniet blanditiis voluptatem ullam similique adipisci
+        laboriosam magnam reiciendis iure, dolor officia! Accusantium perferendis ullam unde dolorum ratione harum,
+        voluptates mollitia adipisci et excepturi similique veritatis eveniet quam perspiciatis omnis officiis. Sit.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto eius adipisci placeat officia, quos
+        consequuntur fuga perspiciatis illo mollitia ducimus autem porro modi aperiam, saepe sint quo earum cupiditate
+        excepturi! Numquam labore velit enim, quod dolorum ex magni assumenda eum odio vitae eos, dolore soluta
+        voluptatibus? Voluptas perferendis nihil neque aliquam nemo laudantium iusto ut nisi. Tenetur dicta eligendi
+        natus maiores numquam ea aut ratione autem eius possimus eveniet blanditiis voluptatem ullam similique adipisci
+        laboriosam magnam reiciendis iure, dolor officia! Accusantium perferendis ullam unde dolorum ratione harum,
+        voluptates mollitia adipisci et excepturi similique veritatis eveniet quam perspiciatis omnis officiis. Sit.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto eius adipisci placeat officia, quos
+        consequuntur fuga perspiciatis illo mollitia ducimus autem porro modi aperiam, saepe sint quo earum cupiditate
+        excepturi! Numquam labore velit enim, quod dolorum ex magni assumenda eum odio vitae eos, dolore soluta
+        voluptatibus? Voluptas perferendis nihil neque aliquam nemo laudantium iusto ut nisi. Tenetur dicta eligendi
+        natus maiores numquam ea aut ratione autem eius possimus eveniet blanditiis voluptatem ullam similique adipisci
+        laboriosam magnam reiciendis iure, dolor officia! Accusantium perferendis ullam unde dolorum ratione harum,
+        voluptates mollitia adipisci et excepturi similique veritatis eveniet quam perspiciatis omnis officiis. Sit.</p>
+    <script>
+        const body = document.getElementById(`page`);
+        const checkbox = document.getElementById(`dita/nata`);
+
+        let darkMode = localStorage.getItem('darkMode') === 'true';
+
+        updateTheme();
+
+        function toggleDarkMode() {
+            darkMode = !darkMode;
+            updateTheme();
+            localStorage.setItem('darkMode', darkMode);
+        }
+
+        function updateTheme() {
+            if (darkMode) {
+                body.style.backgroundColor = `black`;
+                body.style.color = `white`;
+                checkbox.checked = true;
+            } else {
+                body.style.backgroundColor = `white`;
+                body.style.color = `black`;
+                checkbox.checked = false;
+            }
+        }
+
+        checkbox.addEventListener(`change`, toggleDarkMode);
+    </script>
+</body>
+
+</html>
