@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Final Projcet</title>
+    <link rel="stylesheet" href="jsp.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+
+<body id="body">
+
+    <aside id="aside">
+        <h3>cp <span>cool page</span></h3>
+        <hr>
+        <div class="profileRow cpointer" id="profile">
+            <div class="profileLeft"><img src="images/avatar.jpg" class="avatar" alt="profile"><br>
+                <p>John Doe</p>
+            </div>
+            <span class="material-symbols-outlined cpointer expand">
+                expand_more
+            </span>
+        </div>
+
+        <hr>
+
+        <nav>
+            <ul>
+                <li class="red active cpointer">
+                    <div class="listContent">
+                        <span class="material-symbols-outlined">
+                            dashboard
+                        </span>
+                        <p>Dashboard</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="listContent"><span class="material-symbols-outlined">
+                            image
+                        </span>
+                        <p>Pages</p>
+                    </div>
+                    <span class="material-symbols-outlined cpointer expand">
+                        expand_more
+                    </span>
+                </li>
+                <li>
+                    <div class="listContent"><span class="material-symbols-outlined">
+                            apps
+                        </span>
+                        <p>Components</p>
+                    </div><span class="material-symbols-outlined cpointer expand">
+                        expand_more
+                    </span>
+                </li>
+                <li>
+                    <div class="listContent"><span class="material-symbols-outlined">
+                            content_paste
+                        </span>
+                        <p>Forms</p>
+                    </div><span class="material-symbols-outlined cpointer expand">
+                        expand_more
+                    </span>
+                </li>
+                <li>
+                    <div class="listContent"><span class="material-symbols-outlined">
+                            grid_on
+                        </span>
+                        <p>Tables</p>
+                    </div><span class="material-symbols-outlined cpointer expand">
+                        expand_more
+                    </span>
+                </li>
+                <li>
+                    <div class="listContent"><span class="material-symbols-outlined">
+                            location_on
+                        </span>
+                        <p>Maps</p>
+                    </div><span class="material-symbols-outlined cpointer expand">
+                        expand_more
+                    </span>
+                </li>
+                <li>
+                    <div class="listContent"><span class="material-symbols-outlined">
+                            widgets
+                        </span>
+                        <p>Widgets</p>
+                    </div><span class="material-symbols-outlined cpointer expand">
+                        expand_more
+                    </span>
+                </li>
+                <li>
+                    <div class="listContent"><span class="material-symbols-outlined">
+                            timeline
+                        </span>
+                        <p>Charts</p>
+                    </div><span class="material-symbols-outlined cpointer expand">
+                        expand_more
+                    </span>
+                </li>
+                <li>
+                    <div class="listContent"><span class="material-symbols-outlined">
+                            date_range
+                        </span>
+                        <p>Calendar</p>
+                    </div><span class="material-symbols-outlined cpointer expand">
+                        expand_more
+                    </span>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <div class="content">
+        <header>
+            <div class="headerRight">
+                <div class="headerRightDiv">
+                    <button id="openClose">
+                        <span class="material-symbols-outlined iconHover cpointer" title="Hide">
+                            more_vert
+                        </span>
+                    </button>
+                    <p>Dashboard</p>
+                </div>
+                <div class="headerLeft">
+                    <span class="searchBar">
+                        <input type="text" id="searchBarInput" placeholder="Search">
+                        <label for="searchBarInput"><span title="Search"
+                                class="material-symbols-outlined iconHover cpointer">
+                                search
+                            </span>
+                        </label>
+                    </span>
+                    <div class="headerLeftIcons">
+                        <span class="material-symbols-outlined cpointer" title="Dashborde">
+                            dashboard
+                        </span>
+                        <div class="notifications" id="notifications">
+                            <span class="material-symbols-outlined cpointer" title="Notifications">
+                                notifications
+                            </span>
+                            <span class="notificationsNumber" id="notificationsNumber">5</span>
+                            <div id="notificationsListing">
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined cpointer" title="Profile">
+                            person
+                        </span>
+                    </div>
+                </div>
+                <div class="TabletPhoneIcon">
+                    <span class="material-symbols-outlined cpointer" title="Menu">
+                        menu
+                    </span>
+                </div>
+            </div>
+        </header>
+        <main>
+            <section class="section1 borderfix">
+                <div class="section1div">
+                    <span class="material-symbols-outlined iconFix">
+                        language
+                    </span>
+                    <h1>Global Sales by Top Locations</h1>
+                </div>
+                <table class="county-lists" cellpadding="5px">
+                    <tr>
+                        <td class="country-name"><img src="images/usa.png" alt="usa flag" class="flag">USA
+                        </td>
+                        <td>2.920</td>
+                        <td>53.23%</td>
+                    </tr>
+                    <tr>
+                        <td class="country-name"><img src="images/germany.png" alt="germany flag" class="flag">Germany
+                        </td>
+                        <td>1.300</td>
+                        <td>4.34%</td>
+                    </tr>
+                    <tr>
+                        <td class="country-name"><img src="images/australia.png" alt="australia flag"
+                                class="flag">Australia
+                        </td>
+                        <td>760</td>
+                        <td>20.43%</td>
+                    </tr>
+                    <tr>
+                        <td class="country-name"><img src="images/uk.png" alt="UK flag" class="flag">United
+                            Kingdom</td>
+                        <td>690</td>
+                        <td>10.35%</td>
+                    </tr>
+                    <tr>
+                        <td class="country-name"><img src="images/romania.png" alt="Romania flag" class="flag">Romania
+                        </td>
+                        <td>600</td>
+                        <td>7.87%</td>
+                    </tr>
+                    <tr>
+                        <td class="country-name"><img src="images/brazil.png" alt="Brasil flag" class="flag">Brasil</td>
+                        <td>550</td>
+                        <td>5.94%</td>
+                    </tr>
+                </table>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d386520.8160254628!2d-73.97970715435987!3d40.697514238571934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1700343862181!5m2!1sen!2s"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </section>
+            <section class="section2">
+                <div class="section2div borderfix">
+                    <span class="material-symbols-outlined iconFix orange">
+                        chair
+                    </span>
+                    <div class="section2divInsideDiv">
+                        <p>Bookings</p>
+                        <h1>184</h1>
+                    </div>
+                    <hr>
+                    <p> <span class="material-symbols-outlined listingIconFix">
+                            warning
+                        </span><br>Get more space</p>
+                </div>
+                <div class="section2div borderfix">
+                    <span class="material-symbols-outlined iconFix pink">
+                        bar_chart
+                    </span>
+                    <div class="section2divInsideDiv">
+                        <p>Website Visit</p>
+                        <h1>75.521</h1>
+                    </div>
+                    <hr>
+                    <p><span class="material-symbols-outlined listingIconFix2">
+                            sell
+                        </span><br>Tracked from Google Analytics</p>
+                </div>
+                <div class="section2div borderfix">
+                    <span class="material-symbols-outlined iconFix">
+                        store
+                    </span>
+                    <div class="section2divInsideDiv">
+                        <p>Revenue</p>
+                        <h1>$34,245</h1>
+                    </div>
+                    <hr>
+                    <p><span class="material-symbols-outlined listingIconFix">
+                            date_range
+                        </span><br>Last 24 Hours</p>
+                </div>
+                <div class="section2div borderfix">
+                    <span class="material-symbols-outlined iconFix blue">
+                        public
+                    </span>
+                    <div class="section2divInsideDiv">
+                        <p>Followers</p>
+                        <h1>+245</h1>
+                    </div>
+                    <hr>
+                    <p><span class="material-symbols-outlined listingIconFix2">
+                            update
+                        </span><br>Just Updated</p>
+                </div>
+            </section>
+            <section class="section3" id="section3">
+                <h1 class="section3h1">Manage Listings</h1>
+                <div class="section3div">
+                    <div class="card" id="1">
+                        <div class="animation">
+                            <img src="images/card-1.jpeg" alt="card-1">
+                            <div class="animationIcons">
+                                <span class="material-symbols-outlined cgrey cpointer changePhoto" title="More">
+                                    photo_library
+                                </span>
+                                <span class="material-symbols-outlined cgreen cpointer edit" title="Edit">
+                                    edit
+                                </span>
+                                <span class="material-symbols-outlined cred cpointer delet" title="Close">
+                                    close
+                                </span>
+                            </div>
+                        </div>
+                        <h1 class="cardH1 name">Cozy 5 Star Apartment</h1>
+                        <p class="descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci
+                            praesentium eligendi,
+                            deserunt quasi exercitationem, nam sunt quis iure quod voluptate deleniti obcaecati tempore
+                            facere blanditiis suscipit. Provident error.</p>
+                        <hr>
+                        <div class="cardBottom">
+                            <h1 class="price"><span class="currentcy">$</span>899/night</h1>
+                            <p class="cardBottomP location"><span class="material-symbols-outlined">
+                                    location_on
+                                </span> <span class="city">Barcelona</span>,<span class="country">Spain</span></p>
+                        </div>
+                    </div>
+                    <div class="card" id="2">
+                        <div class="animation">
+                            <img src="images/card-2.jpeg" alt="card-2">
+                            <div class="animationIcons">
+                                <span class="material-symbols-outlined cgrey cpointer changePhoto" title="More">
+                                    photo_library
+                                </span>
+                                <span class="material-symbols-outlined cgreen cpointer edit" title="Edit">
+                                    edit
+                                </span>
+                                <span class="material-symbols-outlined cred cpointer delet" title="Close">
+                                    close
+                                </span>
+                            </div>
+                        </div>
+                        <h1 class="cardH1 name">Office Studio</h1>
+                        <p class="descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci
+                            praesentium eligendi,
+                            deserunt quasi exercitationem, nam sunt quis iure quod voluptate deleniti obcaecati tempore
+                            facere blanditiis suscipit. Provident error.</p>
+                        <hr>
+                        <div class="cardBottom">
+                            <h1 class="price"><span class="currentcy">$</span>1.119/night</h1>
+                            <p class="cardBottomP location"><span class="material-symbols-outlined">
+                                    location_on
+                                </span> <span class="city">London</span>,<span class="country">UK</span></p>
+                        </div>
+                    </div>
+                    <div class="card" id="3">
+                        <div class="animation">
+                            <img src="images/card-3.jpeg" alt="card-3">
+                            <div class="animationIcons">
+                                <span class="material-symbols-outlined cgrey cpointer changePhoto" title="More">
+                                    photo_library
+                                </span>
+                                <span class="material-symbols-outlined cgreen cpointer edit" title="Edit">
+                                    edit
+                                </span>
+                                <span class="material-symbols-outlined cred cpointer delet" title="Close">
+                                    close
+                                </span>
+                            </div>
+                        </div>
+                        <h1 class="cardH1 name">Beautiful Castle</h1>
+                        <p class="descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci
+                            praesentium eligendi,
+                            deserunt quasi exercitationem, nam sunt quis iure quod voluptate deleniti obcaecati tempore
+                            facere blanditiis suscipit. Provident error.</p>
+                        <hr>
+                        <div class="cardBottom ">
+                            <h1 class="price"><span class="currentcy">$</span>459/night</h1>
+                            <p class="cardBottomP location"><span class="material-symbols-outlined">
+                                    location_on
+                                </span> <span class="city">Milan</span>,<span class="country">Italy</span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <hr class="footerHr">
+            <div class="footer">
+                <div class="footerR">
+                    <h1>Home</h1>
+                    <h1>Company</h1>
+                    <h1>porfolio</h1>
+                    <h1>blog</h1>
+                </div>
+                <div class="footerL">
+                    <p>&copy; Jhon Doe,2023</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="js/index.js" type="module"></script>
+</body>
+
+</html>
