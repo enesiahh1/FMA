@@ -397,6 +397,7 @@ header {
     font-size: 0.8em;
     padding: 10px;
     border-radius: 5px;
+    width: 30%;
 }
 
 .animation {
@@ -404,7 +405,8 @@ header {
 }
 
 .animation img {
-    width: 300px;
+    width: 80%;
+    height: 20%;
     position: relative;
     top: -20px;
     transition: 0.4s;
@@ -528,6 +530,12 @@ header {
     .section3div {
         flex-direction: column;
         gap: 70px;
+        align-items: center;
+    }
+
+
+    .card {
+        width: 80%;
     }
 
     .animation img {
@@ -554,6 +562,41 @@ header {
     background: transparent;
 }
 
+.nested-list {
+    animation-name: expandAnimation;
+    animation-duration: 2s;
+    /* Adjust the duration as desired */
+    animation-timing-function: ease-in-out;
+    /* Choose an easing function */
+    display: none;
+    height: 49px;
+}
+
+
+.collapse .arrow {
+    display: none;
+}
+
+@keyframes expandAnimation {
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 49px;
+    }
+}
+
+
+.collapse p {
+    display: none;
+}
+
+.collapse .p {
+    display: none;
+}
+
+
 .profileRow {
     display: flex;
     flex-direction: row !important;
@@ -563,12 +606,124 @@ header {
 
 ul ul li {
     padding-left: 56px;
+    animation-name: opacityAnimation;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes opacityAnimation {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .expand {
     transition: transform 0.3s ease;
 }
 
+body:has(#aside.collapse) {
+    grid-template-columns: 0.74fr 10fr;
+}
+
 .rotate-180 {
     transform: rotate(180deg);
+}
+
+.arrow {
+    transition: 2s ease;
+}
+
+#settings {
+    position: fixed;
+    right: 1.3%;
+    top: 40%;
+}
+
+#settings span {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0.2rem 1rem;
+    color: white;
+}
+
+#settingsOpsions {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    position: fixed;
+    right: 6%;
+    top: 5%;
+    background: rgb(237, 237, 237);
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+#settingsOpsions hr {
+    width: 90%;
+    border: 1px solid rgb(125, 124, 124);
+}
+
+.colorBar {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.colorBar img {
+    height: 9.9rem;
+    width: 5rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.ball {
+    padding: 1rem;
+    border-radius: 50%;
+    border: 1px solid transparent;
+}
+
+.activeBall {
+    border: 1px solid gray;
+}
+
+.settingsImgCheck {
+    display: flex;
+    gap: 5px;
+}
+
+/*.pink {
+    background-color: rgb(192, 43, 68);
+}
+
+.orange {
+    background-color: orange;
+}
+
+.red {
+    background: red;
+}
+
+.blue {
+    background: rgb(85, 204, 244);
+}*/
+
+.purple {
+    background-color: purple;
+}
+
+.green {
+    background-color: green;
+}
+
+.black {
+    background-color: black;
+}
+
+.white {
+    background-color: white;
 }

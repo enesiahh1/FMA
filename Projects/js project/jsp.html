@@ -14,13 +14,13 @@
 <body id="body">
 
     <aside id="aside">
-        <h3>cp <span>cool page</span></h3>
+        <h3>cp <span class="p">cool page</span></h3>
         <hr>
         <div class="profileRow cpointer" id="profile">
-            <div class="profileLeft"><img src="images/avatar.jpg" class="avatar" alt="profile"><br>
+            <div class="profileLeft"><img src="images/avatar.jpg" class="avatar" alt="profile">
                 <p>John Doe</p>
             </div>
-            <span class="material-symbols-outlined cpointer expand">
+            <span class="material-symbols-outlined arrow cpointer expand">
                 expand_more
             </span>
         </div>
@@ -37,79 +37,118 @@
                         <p>Dashboard</p>
                     </div>
                 </li>
-                <li>
+                <li class="expand">
                     <div class="listContent"><span class="material-symbols-outlined">
                             image
                         </span>
                         <p>Pages</p>
                     </div>
-                    <span class="material-symbols-outlined cpointer expand">
+                    <span class="material-symbols-outlined arrow cpointer">
                         expand_more
                     </span>
                 </li>
-                <li>
+                <ul class="nested-list">
+                    <li>New Item 1</li>
+                    <li>New Item 2</li>
+                </ul>
+                <li class="expand">
                     <div class="listContent"><span class="material-symbols-outlined">
                             apps
                         </span>
                         <p>Components</p>
-                    </div><span class="material-symbols-outlined cpointer expand">
+                    </div>
+                    <span class="material-symbols-outlined arrow cpointer">
                         expand_more
                     </span>
                 </li>
-                <li>
+                <ul class="nested-list">
+                    <li>New Item 1</li>
+                    <li>New Item 2</li>
+                </ul>
+                <li class="expand">
                     <div class="listContent"><span class="material-symbols-outlined">
                             content_paste
                         </span>
                         <p>Forms</p>
-                    </div><span class="material-symbols-outlined cpointer expand">
+                    </div>
+                    <span class="material-symbols-outlined arrow cpointer">
                         expand_more
                     </span>
                 </li>
-                <li>
+                <ul class="nested-list">
+                    <li>New Item 1</li>
+                    <li>New Item 2</li>
+                </ul>
+                <li class="expand">
                     <div class="listContent"><span class="material-symbols-outlined">
                             grid_on
                         </span>
                         <p>Tables</p>
-                    </div><span class="material-symbols-outlined cpointer expand">
+                    </div>
+                    <span class="material-symbols-outlined arrow cpointer">
                         expand_more
                     </span>
                 </li>
-                <li>
+                <ul class="nested-list">
+                    <li>New Item 1</li>
+                    <li>New Item 2</li>
+                </ul>
+                <li class="expand">
                     <div class="listContent"><span class="material-symbols-outlined">
                             location_on
                         </span>
                         <p>Maps</p>
-                    </div><span class="material-symbols-outlined cpointer expand">
+                    </div>
+                    <span class="material-symbols-outlined arrow cpointer">
                         expand_more
                     </span>
                 </li>
-                <li>
+                <ul class="nested-list">
+                    <li>New Item 1</li>
+                    <li>New Item 2</li>
+                </ul>
+                <li class="expand">
                     <div class="listContent"><span class="material-symbols-outlined">
                             widgets
                         </span>
                         <p>Widgets</p>
-                    </div><span class="material-symbols-outlined cpointer expand">
+                    </div>
+                    <span class="material-symbols-outlined arrow cpointer">
                         expand_more
                     </span>
                 </li>
-                <li>
+                <ul class="nested-list">
+                    <li>New Item 1</li>
+                    <li>New Item 2</li>
+                </ul>
+                <li class="expand">
                     <div class="listContent"><span class="material-symbols-outlined">
                             timeline
                         </span>
                         <p>Charts</p>
-                    </div><span class="material-symbols-outlined cpointer expand">
+                    </div>
+                    <span class="material-symbols-outlined arrow cpointer">
                         expand_more
                     </span>
                 </li>
-                <li>
+                <ul class="nested-list">
+                    <li>New Item 1</li>
+                    <li>New Item 2</li>
+                </ul>
+                <li class="expand">
                     <div class="listContent"><span class="material-symbols-outlined">
                             date_range
                         </span>
                         <p>Calendar</p>
-                    </div><span class="material-symbols-outlined cpointer expand">
+                    </div>
+                    <span class="material-symbols-outlined arrow cpointer">
                         expand_more
                     </span>
                 </li>
+                <ul class="nested-list">
+                    <li>New Item 1</li>
+                    <li>New Item 2</li>
+                </ul>
             </ul>
         </nav>
     </aside>
@@ -352,6 +391,41 @@
                 </div>
             </section>
         </main>
+        <div id="settings">
+            <span class="material-symbols-outlined cpointer borderfix">
+                settings
+            </span>
+            <div id="settingsOpsions">
+                <h3>SIDEBAR FILTERS</h3>
+                <div class="colorBar">
+                    <div class="ball pink cpointer"></div>
+                    <div class="ball orange cpointer"></div>
+                    <div class="ball red cpointer"></div>
+                    <div class="ball blue cpointer"></div>
+                    <div class="ball purple cpointer"></div>
+                    <div class="ball green cpointer"></div>
+                </div>
+                <hr>
+                <h3>SIDEBAR BACKGROUND</h3>
+                <div class="settingsImgCheck">
+                    <div class="ball white cpointer"></div>
+                    <div class="ball black cpointer"></div>
+                </div>
+                <hr>
+                <div class="settingsImgCheck">
+                    <label for="checkbox">
+                        <h3>Sidebar Image</h3>
+                    </label> <input class="cpointer" id="checkbox" type="checkbox">
+                </div>
+                <hr>
+                <h3>IMAGES</h3>
+                <div class="colorBar"><img src="images/sidebar-2.jpg" alt=""><img
+                        src="https://demos.creative-tim.com/bs3/material-dashboard-pro/assets/img/sidebar-4.jpg"
+                        alt=""><img
+                        src="	https://demos.creative-tim.com/bs3/material-dashboard-pro/assets/img/sidebar-3.jpg"
+                        alt=""><img src="images/sidebar-1.jpg" alt=""></div>
+            </div>
+        </div>
         <footer>
             <hr class="footerHr">
             <div class="footer">

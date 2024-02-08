@@ -21,7 +21,25 @@ function updateCardInDOM(cardData) {
         cardElement.querySelector('.price').innerHTML = cardData.price;
         cardElement.querySelector('.city').innerHTML = cardData.location.city;
         cardElement.querySelector('.country').innerHTML = cardData.location.country;
+        updateImagesFromData();
     }
+}
+
+function updateImagesFromData() {
+    // Iterate through the cardsData array
+    cardsData.forEach(function (cardData) {
+        // Find the corresponding card element based on the card's ID
+        let cardElement = document.getElementById(cardData.id);
+
+        // If the card element exists and the card data has a new imgSrc property
+        if (cardElement && cardData.imgSrc) {
+            // Find the img element within the card
+            let imgElement = cardElement.querySelector('img');
+
+            // Update the src attribute of the img element with the new imgSrc
+            imgElement.src = cardData.imgSrc;
+        }
+    });
 }
 
 // Event listener for when the DOM is fully loaded
@@ -48,7 +66,6 @@ cards.forEach(function (card, index) {
         // Extract city and country from the location element
         let cityElement = locationElement.querySelector('.city');
         let countryElement = locationElement.querySelector('.country');
-        let currency = priceElement.querySelector('.currency');
 
         // Create a card object
         let cardObject = {
@@ -83,32 +100,41 @@ animationIcons.forEach(function (icons) {
     let editIcon = icons.querySelector('.edit');
     let deleteIcon = icons.querySelector('.delet');
 
-    // Add event listeners to each icon
     changePhotoIcon.addEventListener('click', function () {
+        // Find the closest img element
+        let closestImg = icons.closest('.animation').querySelector('img');
+
+        // Find the corresponding data object based on the card's ID
+        let cardId = parseInt(icons.closest('.card').id);
+        let cardDataIndex = cardsData.findIndex(data => data.id === cardId);
+
         // Prompt the user for a new image URL
         let newImageUrl = prompt('Enter the new image URL:');
 
         // Check if the user entered a URL
         if (newImageUrl) {
-            // Get the closest img element and update its src attribute
-            let closestImg = icons.closest('.animation').querySelector('img');
-            if (closestImg) {
-                closestImg.src = newImageUrl;
+            // Update the src attribute of the <img> element
+            closestImg.src = newImageUrl;
 
-                // Update the DOM to reflect the changes
-                let cardId = parseInt(icons.closest('.card').id);
-                let cardDataIndex = cardsData.findIndex(data => data.id === cardId);
-                if (cardDataIndex !== -1) {
-                    cardsData[cardDataIndex].imgSrc = newImageUrl;
-
-                    // Save the updated array in local storage
-                    localStorage.setItem('cardsData', JSON.stringify(cardsData));
-                }
+            // Update or add the image source to the corresponding cardData object
+            if (cardDataIndex !== -1) {
+                // If the card data exists, update the imgSrc property
+                cardsData[cardDataIndex].imgSrc = newImageUrl;
             } else {
-                console.error('Could not find closest img element.');
+                // If the card data doesn't exist, create a new object and add it to the array
+                cardsData.push({
+                    id: cardId,
+                    imgSrc: newImageUrl
+                });
             }
+
+            // Save the updated array in local storage
+            localStorage.setItem('cardsData', JSON.stringify(cardsData));
+        } else {
+            console.error('No image URL provided.');
         }
     });
+
 
     // Add event listener for the "Edit" icon
     editIcon.addEventListener('click', function () {
@@ -119,51 +145,69 @@ animationIcons.forEach(function (icons) {
         let cardId = parseInt(card.id);
         let cardDataIndex = cardsData.findIndex(data => data.id === cardId);
 
-        // Prompt the user for new data based on the existing values
-        let newName = prompt(`Enter the new name (current: ${cardsData[cardDataIndex].name}):`) || cardsData[cardDataIndex].name;
-        let newDescription = prompt(`Enter the new description (current: ${cardsData[cardDataIndex].description}):`) || cardsData[cardDataIndex].description;
-        let newPrice = prompt(`Enter the new price (current: ${cardsData[cardDataIndex].price}):`) || cardsData[cardDataIndex].price;
-        let newCity = prompt(`Enter the new city (current: ${cardsData[cardDataIndex].location.city}):`) || cardsData[cardDataIndex].location.city;
-        let newCountry = prompt(`Enter the new country (current: ${cardsData[cardDataIndex].location.country}):`) || cardsData[cardDataIndex].location.country;
+        // Get the elements inside the card for editing
+        let nameElement = card.querySelector('.name');
+        let descriptionElement = card.querySelector('.descripton');
+        let priceElement = card.querySelector('.price');
+        let cityElement = card.querySelector('.city');
+        let countryElement = card.querySelector('.country');
 
-        // Update the data in the array
-        if (cardDataIndex !== -1) {
-            // Directly assign new values to the properties of the existing cardData object
-            cardsData[cardDataIndex].name = newName;
-            cardsData[cardDataIndex].description = newDescription;
-            cardsData[cardDataIndex].price = newPrice;
-            cardsData[cardDataIndex].location.city = newCity;
-            cardsData[cardDataIndex].location.country = newCountry;
+        // Check if the card is in edit mode
+        let edited = nameElement.contentEditable === 'true';
+
+        // Toggle content editing for each element
+        if (!edited) {
+            // Enable content editing for each element
+            nameElement.contentEditable = true;
+            descriptionElement.contentEditable = true;
+            priceElement.contentEditable = true;
+            cityElement.contentEditable = true;
+            countryElement.contentEditable = true;
+
+            // Add a border or some visual indication to show that the elements are editable
+            nameElement.style.border = '1px solid #ccc';
+            descriptionElement.style.border = '1px solid #ccc';
+            priceElement.style.border = '1px solid #ccc';
+            cityElement.style.border = '1px solid #ccc';
+            countryElement.style.border = '1px solid #ccc';
+        } else {
+            // Disable content editing for each element
+            nameElement.contentEditable = false;
+            descriptionElement.contentEditable = false;
+            priceElement.contentEditable = false;
+            cityElement.contentEditable = false;
+            countryElement.contentEditable = false;
+
+            // Remove the border or visual indication
+            nameElement.style.border = 'none';
+            descriptionElement.style.border = 'none';
+            priceElement.style.border = 'none';
+            cityElement.style.border = 'none';
+            countryElement.style.border = 'none';
+
+            // Update the data in the array
+            cardsData[cardDataIndex].name = nameElement.textContent.trim();
+            cardsData[cardDataIndex].description = descriptionElement.textContent.trim();
+            cardsData[cardDataIndex].price = priceElement.textContent.trim();
+            cardsData[cardDataIndex].location.city = cityElement.textContent.trim();
+            cardsData[cardDataIndex].location.country = countryElement.textContent.trim();
 
             // Log the updated data object
             console.log(cardsData[cardDataIndex]);
-
-            // Update the DOM to reflect the changes
-            updateCardInDOM(cardsData[cardDataIndex]);
 
             // Save the updated array in local storage
             localStorage.setItem('cardsData', JSON.stringify(cardsData));
         }
     });
 
+
+
     // Add event listener for the "Delete" icon
     deleteIcon.addEventListener('click', function () {
         // Find the closest .card ancestor of the icons element
         let card = icons.closest('.card');
+        // Remove the card from the DOM
+        card.remove();
 
-        // Find the corresponding data object based on the card's ID
-        let cardId = parseInt(card.id);
-        let cardDataIndex = cardsData.findIndex(data => data.id === cardId);
-
-        // Remove the data object from the array
-        if (cardDataIndex !== -1) {
-            cardsData.splice(cardDataIndex, 1);
-
-            // Remove the card from the DOM
-            card.remove();
-
-            // Save the updated array in local storage
-            localStorage.setItem('cardsData', JSON.stringify(cardsData));
-        }
     });
 });
