@@ -564,7 +564,7 @@ header {
 
 .nested-list {
     animation-name: expandAnimation;
-    animation-duration: 2s;
+    animation-duration: 1s;
     /* Adjust the duration as desired */
     animation-timing-function: ease-in-out;
     /* Choose an easing function */
@@ -572,6 +572,17 @@ header {
     height: 49px;
 }
 
+.shrink {
+    animation-name: shrinkAnimation;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+}
+
+.collapse {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .collapse .arrow {
     display: none;
@@ -588,6 +599,16 @@ header {
 }
 
 
+@keyframes shrinkAnimation {
+    from {
+        height: 49px;
+    }
+
+    to {
+        height: 0;
+    }
+}
+
 .collapse p {
     display: none;
 }
@@ -596,6 +617,17 @@ header {
     display: none;
 }
 
+.collapse li {
+    padding: 0 0.5rem;
+}
+
+.collapse hr {
+    width: 90%;
+}
+
+.collapse .nested-list {
+    display: none !important;
+}
 
 .profileRow {
     display: flex;
@@ -607,7 +639,7 @@ header {
 ul ul li {
     padding-left: 56px;
     animation-name: opacityAnimation;
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-timing-function: ease-in-out;
 }
 
@@ -634,7 +666,7 @@ body:has(#aside.collapse) {
 }
 
 .arrow {
-    transition: 2s ease;
+    transition: 1s ease;
 }
 
 #settings {
@@ -675,42 +707,27 @@ body:has(#aside.collapse) {
 }
 
 .colorBar img {
-    height: 9.9rem;
+    height: 9.4rem;
     width: 5rem;
     border-radius: 10px;
     cursor: pointer;
+    border: 2px solid transparent;
 }
 
 .ball {
     padding: 1rem;
     border-radius: 50%;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
 }
 
 .activeBall {
-    border: 1px solid gray;
+    border: 2px solid gray !important;
 }
 
 .settingsImgCheck {
     display: flex;
     gap: 5px;
 }
-
-/*.pink {
-    background-color: rgb(192, 43, 68);
-}
-
-.orange {
-    background-color: orange;
-}
-
-.red {
-    background: red;
-}
-
-.blue {
-    background: rgb(85, 204, 244);
-}*/
 
 .purple {
     background-color: purple;

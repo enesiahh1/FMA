@@ -40,9 +40,16 @@ let notifaciconsListingOpen = false;
 notifaciconsDiv.addEventListener(`click`, () => {
     if (!notifaciconsListingOpen) {
         notifaciconsListing.style.display = `block`;
+        body.addEventListener(`dblclick`, () => {
+            if (notifaciconsListing.style.display == `block`) {
+                notifaciconsListing.style.display = `none`;
+            }
+        })
         notifaciconsListingOpen = true;
     } else {
         notifaciconsListing.style.display = `none`;
         notifaciconsListingOpen = false;
     }
 })
+
+let body = document.querySelector(`body`);

@@ -29,6 +29,7 @@ function toggleExpansion(target) {
             // Toggle the display of the nested <ul> element
             if (nestedList && nestedList.classList.contains('nested-list')) {
                 nestedList.style.display = (nestedList.style.display === 'none' || !nestedList.style.display) ? 'block' : 'none';
+
             }
 
         }

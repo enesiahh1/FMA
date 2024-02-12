@@ -16,9 +16,16 @@ settingsToggle.addEventListener('click', function () {
     }
 });
 
+body.addEventListener(`dblclick`, () => {
+    if (settingsOptions.style.display == `flex`) {
+        settingsOptions.style.display = `none`;
+    }
+})
+
+
 // Get all the color balls
 let colorBalls = document.querySelectorAll('.colorBar .ball');
-
+let activeClassElement = document.querySelector('.active');
 // Add click event listener to each color ball
 colorBalls.forEach(function (ball) {
     ball.addEventListener('click', function () {
@@ -30,14 +37,8 @@ colorBalls.forEach(function (ball) {
         // Add 'activeBall' class to the clicked ball
         ball.classList.add('activeBall');
 
-        // Get the background color of the clicked ball
-        let ballColor = window.getComputedStyle(ball).backgroundColor;
-
         // Update the background color of the '.active' class
-        let activeElement = document.querySelector('.active');
-        if (activeElement) {
-            activeElement.style.backgroundColor = ballColor;
-        }
+        activeClassElement.style.backgroundColor = window.getComputedStyle(ball).backgroundColor;;
     });
 });
 
@@ -65,10 +66,12 @@ colorBalls2.forEach(function (ball) {
         } else {
             color = `linear-gradient(0deg, rgba(127, 127, 127, 0.7), rgba(127, 127, 127, 0.7))`;
         }
-
-        // Set the background color of the aside element including gradient and image
-        aside.style.background = `${color}, url(${backgroundImageUrl})`;
-        aside.style.backgroundSize = "cover"; // Adjust background size as needed
+        if (checkbox.checked) {
+            aside.style.background = `${color}`
+        } else {
+            aside.style.background = `${color}, url(${backgroundImageUrl})`;
+            aside.style.backgroundSize = "cover"; // Adjust background size as needed
+        }
     });
 });
 
@@ -97,17 +100,28 @@ let colorBarImages = document.querySelectorAll('.colorBar img');
 // Add click event listener to each image
 colorBarImages.forEach(function (image) {
     image.addEventListener('click', function () {
+
+        // Remove 'activeBall' class from all color balls
+        colorBarImages.forEach(function (image) {
+            image.classList.remove('activeBall');
+        });
+
+        // Add 'activeBall' class to the clicked ball
+        image.classList.add('activeBall');
+
         // Get the source of the clicked image
         let imageUrl = image.getAttribute('src');
-
-        // Set the background URL of the aside element to the clicked image source
-        aside.style.backgroundImage = `${color} ,url(${imageUrl})`;
+        backgroundImageUrl = imageUrl;
+        if (checkbox.checked) {
+        } else {
+            aside.style.backgroundImage = `${color} ,url(${backgroundImageUrl})`;
+        }
     });
 });
 
 // Function to save customization data to local storage
 function saveCustomizationToLocalStorage() {
-    localStorage.setItem('customization', JSON.stringify({ color: color, checkbox: checkbox.checked, backgroundImageUrl: backgroundImageUrl }));
+    localStorage.setItem('customization', JSON.stringify({ color: color, checkbox: checkbox.checked, backgroundImageUrl: backgroundImageUrl, ballColor: activeClassElement.style.backgroundColor }));
 }
 
 // Function to load customization data from local storage
@@ -117,6 +131,7 @@ function loadCustomizationFromLocalStorage() {
         color = customization.color;
         checkbox.checked = customization.checkbox;
         backgroundImageUrl = customization.backgroundImageUrl;
+        activeClassElement.style.background = customization.ballColor;
 
         if (checkbox.checked) {
             aside.style.background = color;
