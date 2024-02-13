@@ -1,94 +1,95 @@
-console.log(`I'm in the listings`);
-
 // Get the element you need.
-let section = document.getElementById(`section3`);
+let section = document.getElementById(`section3div`);
 
 // Get all the elements with the class 'card'
 let cards = document.querySelectorAll('.card');
 
 // Global variable to store card data
-let cardsData = [];
-
-// Function to update the DOM based on the cardData array
-function updateCardInDOM(cardData) {
-    // Find the card in the DOM based on its ID
-    let cardElement = document.getElementById(cardData.id);
-
-    if (cardElement) {
-        // Update the content of the card
-        cardElement.querySelector('.name').innerHTML = cardData.name;
-        cardElement.querySelector('.descripton').innerHTML = cardData.description;
-        cardElement.querySelector('.price').innerHTML = cardData.price;
-        cardElement.querySelector('.city').innerHTML = cardData.location.city;
-        cardElement.querySelector('.country').innerHTML = cardData.location.country;
-        updateImagesFromData();
-    }
-}
-
-function updateImagesFromData() {
-    // Iterate through the cardsData array
-    cardsData.forEach(function (cardData) {
-        // Find the corresponding card element based on the card's ID
-        let cardElement = document.getElementById(cardData.id);
-
-        // If the card element exists and the card data has a new imgSrc property
-        if (cardElement && cardData.imgSrc) {
-            // Find the img element within the card
-            let imgElement = cardElement.querySelector('img');
-
-            // Update the src attribute of the img element with the new imgSrc
-            imgElement.src = cardData.imgSrc;
+let cardsData = [
+    {
+        imgUrl: `images/card-1.jpeg`,
+        id: `1`,
+        name: `Cozy 5 Star Apartment`,
+        description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci praesentium eligendi, deserunt quasi exercitationem, nam sunt quis iure quod voluptate deleniti obcaecati tempore facere blanditiis suscipit. Provident error. `,
+        currency: `$`,
+        price: `$899/night`,
+        location: {
+            city: `Barcelona`,
+            country: `Spain`
         }
-    });
-}
-
-// Event listener for when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', function () {
-    // Retrieve data from local storage or initialize an empty array
-    cardsData = JSON.parse(localStorage.getItem('cardsData')) || [];
-
-    // Iterate through the array and update existing cards in the DOM
-    cardsData.forEach(function (cardData) {
-        updateCardInDOM(cardData);
-    });
-});
-
-// Iterate through each card
-cards.forEach(function (card, index) {
-    // Get the elements inside each card
-    let h1Element = card.querySelector('.name');
-    let pElement = card.querySelector('.descripton');
-    let priceElement = card.querySelector('.price');
-    let locationElement = card.querySelector('.location');
-
-    // Check if elements exist
-    if (h1Element && pElement && priceElement && locationElement) {
-        // Extract city and country from the location element
-        let cityElement = locationElement.querySelector('.city');
-        let countryElement = locationElement.querySelector('.country');
-
-        // Create a card object
-        let cardObject = {
-            id: index + 1, // Use index + 1 as the ID
-            name: h1Element.textContent.trim(),
-            description: pElement.textContent.trim(),
-            price: priceElement.textContent.trim(),
-            currency: '$', // You can customize this based on your needs
-            location: {
-                city: cityElement.textContent.trim(),
-                country: countryElement.textContent.trim()
-            }
-        };
-
-        // Push the card object to the array
-        cardsData.push(cardObject);
+    },
+    {
+        imgUrl: `images/card-2.jpeg`,
+        id: `2`,
+        name: `Office Studio`,
+        description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci praesentium eligendi, deserunt quasi exercitationem, nam sunt quis iure quod voluptate deleniti obcaecati tempore facere blanditiis suscipit. Provident error. `,
+        currency: `$`,
+        price: `$1.119/night`,
+        location: {
+            city: `London`,
+            country: `UK`
+        }
+    },
+    {
+        imgUrl: `images/card-3.jpeg`,
+        id: `3`,
+        name: `Beautiful Castle`,
+        description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci praesentium eligendi, deserunt quasi exercitationem, nam sunt quis iure quod voluptate deleniti obcaecati tempore facere blanditiis suscipit. Provident error. `,
+        currency: `$`,
+        price: `$459/night`,
+        location: {
+            city: `Milan`,
+            country: `Italy`
+        }
     }
-});
+];
 
-// Save the array in local storage only if it's not already stored
-if (!localStorage.getItem('cardsData')) {
+// Check if there is any data already stored in local storage
+let storedCardsData = JSON.parse(localStorage.getItem('cardsData'));
+
+// If no data is found, set the initial cardsData and store it in local storage
+if (!storedCardsData) {
     localStorage.setItem('cardsData', JSON.stringify(cardsData));
+    storedCardsData = JSON.parse(localStorage.getItem('cardsData'));
 }
+
+
+storedCardsData.forEach(card => {
+    // Create a new <div> for the card
+    let cardDiv = document.createElement('div');
+    cardDiv.classList.add('card');
+    cardDiv.id = card.id;
+
+    // Populate the card div with the properties of the card object
+    cardDiv.innerHTML = `
+    <div class="animation">
+        <img src="${card.imgUrl}" alt="card-1">
+        <div class="animationIcons">
+            <span class="material-symbols-outlined cgrey cpointer changePhoto" title="More">
+                photo_library
+            </span>
+            <span class="material-symbols-outlined cgreen cpointer edit" title="Edit">
+                edit
+            </span>
+            <span class="material-symbols-outlined cred cpointer delet" title="Close">
+                close
+            </span>
+        </div>
+    </div>
+    <h1 class="cardH1 name">${card.name}</h1>
+    <p class="description">${card.description}</p>
+    <hr>
+    <div class="cardBottom">
+        <h1 class="price">${card.price}</h1>
+        <p class="cardBottomP location"><span class="material-symbols-outlined">
+                location_on
+            </span> <span class="city">${card.location.city}</span>,<span class="country">${card.location.country}</span></p>
+    </div>
+    `;
+
+    // Append the card div to the section
+    section.appendChild(cardDiv);
+});
 
 // Get all the elements with the class 'animationIcons'
 let animationIcons = document.querySelectorAll('.animationIcons');
@@ -105,7 +106,7 @@ animationIcons.forEach(function (icons) {
         let closestImg = icons.closest('.animation').querySelector('img');
 
         // Find the corresponding data object based on the card's ID
-        let cardId = parseInt(icons.closest('.card').id);
+        let cardId = icons.closest('.card').id;
         let cardDataIndex = cardsData.findIndex(data => data.id === cardId);
 
         // Prompt the user for a new image URL
@@ -119,13 +120,7 @@ animationIcons.forEach(function (icons) {
             // Update or add the image source to the corresponding cardData object
             if (cardDataIndex !== -1) {
                 // If the card data exists, update the imgSrc property
-                cardsData[cardDataIndex].imgSrc = newImageUrl;
-            } else {
-                // If the card data doesn't exist, create a new object and add it to the array
-                cardsData.push({
-                    id: cardId,
-                    imgSrc: newImageUrl
-                });
+                cardsData[cardDataIndex].imgUrl = newImageUrl;
             }
 
             // Save the updated array in local storage
@@ -140,14 +135,17 @@ animationIcons.forEach(function (icons) {
     editIcon.addEventListener('click', function () {
         // Find the closest .card ancestor of the icons element
         let card = icons.closest('.card');
+        editIcon.innerHTML = `<span class="material-symbols-outlined">
+        save
+        </span>`;
 
         // Find the corresponding data object based on the card's ID
-        let cardId = parseInt(card.id);
+        let cardId = card.id;
         let cardDataIndex = cardsData.findIndex(data => data.id === cardId);
 
         // Get the elements inside the card for editing
         let nameElement = card.querySelector('.name');
-        let descriptionElement = card.querySelector('.descripton');
+        let descriptionElement = card.querySelector('.description');
         let priceElement = card.querySelector('.price');
         let cityElement = card.querySelector('.city');
         let countryElement = card.querySelector('.country');
@@ -171,6 +169,8 @@ animationIcons.forEach(function (icons) {
             cityElement.style.border = '1px solid #ccc';
             countryElement.style.border = '1px solid #ccc';
         } else {
+
+            editIcon.innerHTML = `edit`
             // Disable content editing for each element
             nameElement.contentEditable = false;
             descriptionElement.contentEditable = false;
@@ -186,6 +186,7 @@ animationIcons.forEach(function (icons) {
             countryElement.style.border = 'none';
 
             // Update the data in the array
+            console.log(nameElement.textContent)
             cardsData[cardDataIndex].name = nameElement.textContent.trim();
             cardsData[cardDataIndex].description = descriptionElement.textContent.trim();
             cardsData[cardDataIndex].price = priceElement.textContent.trim();
@@ -206,8 +207,19 @@ animationIcons.forEach(function (icons) {
     deleteIcon.addEventListener('click', function () {
         // Find the closest .card ancestor of the icons element
         let card = icons.closest('.card');
+        let cardId = card.id;
         // Remove the card from the DOM
         card.remove();
 
+        // Find the index of the object with the matching ID in the cardsData array
+        let indexToDelete = cardsData.findIndex(data => data.id === cardId);
+
+        // If the object with the matching ID is found, remove it from the array
+        if (indexToDelete !== -1) {
+            cardsData.splice(indexToDelete, 1);
+
+            // Update local storage
+            localStorage.setItem('cardsData', JSON.stringify(cardsData));
+        }
     });
 });

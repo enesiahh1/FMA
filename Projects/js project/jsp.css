@@ -115,7 +115,7 @@ aside h3 {
 }
 
 .active {
-    background-color: red;
+    background-color: var(--ball-color);
     display: flex;
     align-items: center;
     gap: 20px;
@@ -246,14 +246,13 @@ header {
 }
 
 #notificationsListing p:hover {
-    background: red;
     color: white;
     cursor: pointer;
 }
 
 .notificationsNumber {
     border-radius: 50%;
-    background-color: red;
+    background-color: var(--ball-color);
     color: white;
     width: 12.5px;
     height: 12.5px;
@@ -564,7 +563,7 @@ header {
 
 .nested-list {
     animation-name: expandAnimation;
-    animation-duration: 1s;
+    animation-duration: 0.7s;
     /* Adjust the duration as desired */
     animation-timing-function: ease-in-out;
     /* Choose an easing function */
@@ -574,7 +573,7 @@ header {
 
 .shrink {
     animation-name: shrinkAnimation;
-    animation-duration: 1s;
+    animation-duration: 0.7s;
     animation-timing-function: ease-in-out;
 }
 
@@ -639,7 +638,7 @@ header {
 ul ul li {
     padding-left: 56px;
     animation-name: opacityAnimation;
-    animation-duration: 1s;
+    animation-duration: 0.7s;
     animation-timing-function: ease-in-out;
 }
 
@@ -666,7 +665,7 @@ body:has(#aside.collapse) {
 }
 
 .arrow {
-    transition: 1s ease;
+    transition: 0.7s ease;
 }
 
 #settings {
@@ -743,4 +742,8 @@ body:has(#aside.collapse) {
 
 .white {
     background-color: white;
+}
+
+:root {
+    --ball-color: red;
 }

@@ -16,7 +16,7 @@ localStorage.setItem(`notification`, JSON.stringify(defautleNotifacicons));
 
 //1. i lexojme prej ls notifications
 let notifacicons = JSON.parse(localStorage.getItem(`notification`));
-
+let customization = JSON.parse(localStorage.getItem(`customization`));
 
 //2.i vendosim n`html
 let notifaciconsBody = document.getElementById(`notificationsListing`);
@@ -24,6 +24,14 @@ let notifaciconsBody = document.getElementById(`notificationsListing`);
 notifacicons.forEach((elemet) => {
     let el = document.createElement(`p`);
     el.textContent = elemet;
+    el.addEventListener('mouseenter', function () {
+        // Add the class when the mouse enters
+        el.classList.add('active');
+    });
+    el.addEventListener('mouseleave', function () {
+        // Add the class when the mouse enters
+        el.classList.remove('active');
+    });
     notifaciconsBody.appendChild(el);
 });
 
@@ -31,6 +39,7 @@ notifacicons.forEach((elemet) => {
 //3.e ndreqim numrin e notifications
 let notifaciconsNumberHtml = document.getElementById(`notificationsNumber`);
 notifaciconsNumberHtml.textContent = notifacicons.length;
+notifaciconsNumberHtml.style.background;
 
 //4.me click mu qel
 let notifaciconsDiv = document.getElementById(`notifications`);
