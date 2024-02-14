@@ -7,20 +7,27 @@ let settingsToggle = document.querySelector('#settings > span');
 let settingsOptions = document.querySelector('#settingsOpsions');
 
 // Add click event listener to the settings toggle
-settingsToggle.addEventListener('click', function () {
+settingsToggle.addEventListener('click', function (event) {
+
+    event.stopPropagation();
+
     // Toggle the display property of the settings options
     if (settingsOptions.style.display === 'flex') {
         settingsOptions.style.display = 'none';
+        body.removeEventListener('click', bodyClickHandler);
     } else {
         settingsOptions.style.display = 'flex';
+        body.addEventListener('click', bodyClickHandler);
     }
 });
 
-body.addEventListener(`dblclick`, () => {
-    if (settingsOptions.style.display == `flex`) {
-        settingsOptions.style.display = `none`;
+function bodyClickHandler(event) {
+    // Check if the click event is not inside the settings options
+    if (!settingsOptions.contains(event.target)) {
+        settingsOptions.style.display = 'none';
+        body.removeEventListener('click', bodyClickHandler);
     }
-})
+}
 
 
 // Get all the color balls
@@ -67,6 +74,7 @@ colorBalls2.forEach(function (ball) {
         ball.classList.add('activeBall');
 
         if (ball.classList.contains(`black`)) {
+
             color = `linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))`;
         } else {
             color = `linear-gradient(0deg, rgba(127, 127, 127, 0.7), rgba(127, 127, 127, 0.7))`;
@@ -153,3 +161,46 @@ loadCustomizationFromLocalStorage();
 
 // Add event listener to window to save customization data when the page is unloaded
 window.addEventListener('unload', saveCustomizationToLocalStorage);
+
+// Get the computed style of an element
+let computedStyle = window.getComputedStyle(document.documentElement);
+
+// Get the value of a CSS variable
+let variableValue = computedStyle.getPropertyValue('--ball-color').trim();
+console.log(variableValue);
+console.log(color);
+
+// Now, variableValue contains the value of the CSS variable '--your-css-variable-name'
+
+
+// Function to add the active class to the element that matches the stored value
+function setActiveClass(elements, storedValue) {
+    elements.forEach((element) => {
+        let computedStyle = window.getComputedStyle(element);
+        let backgroundColor = computedStyle.getPropertyValue('background-color');
+        if (backgroundColor === storedValue || element.getAttribute('src') === storedValue) {
+            element.classList.add('activeBall');
+        } else {
+            element.classList.remove('activeBall');
+        }
+    });
+}
+
+// Call the function to set the active class for color balls
+setActiveClass(colorBalls, variableValue);
+
+// Call the function to set the active class for color balls inside .settingsImgCheck div
+setActiveClass(colorBalls2, color);
+
+// Call the function to set the active class for images inside colorBar
+setActiveClass(colorBarImages, backgroundImageUrl);
+
+if (color == `linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))`) {
+    let asideColorBall = document.getElementById(`black`);
+    asideColorBall.classList.add(`activeBall`);
+} else {
+    let asideColorBall = document.getElementById(`white`);
+    console.log(asideColorBall)
+    asideColorBall.classList.add(`activeBall`);
+}
+

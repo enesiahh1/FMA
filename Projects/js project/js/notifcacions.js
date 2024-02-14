@@ -46,19 +46,26 @@ let notifaciconsDiv = document.getElementById(`notifications`);
 let notifaciconsListing = document.getElementById(`notificationsListing`);
 let notifaciconsListingOpen = false;
 
-notifaciconsDiv.addEventListener(`click`, () => {
-    if (!notifaciconsListingOpen) {
-        notifaciconsListing.style.display = `block`;
-        body.addEventListener(`dblclick`, () => {
-            if (notifaciconsListing.style.display == `block`) {
-                notifaciconsListing.style.display = `none`;
-            }
-        })
-        notifaciconsListingOpen = true;
+notifaciconsDiv.addEventListener('click', function (event) {
+
+    event.stopPropagation();
+
+    // Toggle the display property of the settings options
+    if (notifaciconsListing.style.display === 'block') {
+        notifaciconsListing.style.display = 'none';
+        body.removeEventListener('click', bodyClickHandler);
     } else {
-        notifaciconsListing.style.display = `none`;
-        notifaciconsListingOpen = false;
+        notifaciconsListing.style.display = 'block';
+        body.addEventListener('click', bodyClickHandler);
     }
-})
+});
+
+function bodyClickHandler(event) {
+    // Check if the click event is not inside the settings options
+    if (!notifaciconsListing.contains(event.target)) {
+        notifaciconsListing.style.display = 'none';
+        body.removeEventListener('click', bodyClickHandler);
+    }
+}
 
 let body = document.querySelector(`body`);

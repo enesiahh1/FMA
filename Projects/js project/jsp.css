@@ -568,7 +568,6 @@ header {
     animation-timing-function: ease-in-out;
     /* Choose an easing function */
     display: none;
-    height: 49px;
 }
 
 .shrink {
@@ -583,17 +582,21 @@ header {
     align-items: center;
 }
 
+.collapse .material-symbols-outlined {
+    padding: 0.2rem;
+}
+
 .collapse .arrow {
     display: none;
 }
 
 @keyframes expandAnimation {
     from {
-        height: 0;
+        max-height: 0;
     }
 
     to {
-        height: 49px;
+        max-height: 300px;
     }
 }
 
@@ -706,7 +709,7 @@ body:has(#aside.collapse) {
 }
 
 .colorBar img {
-    height: 9.4rem;
+    height: 9.2rem;
     width: 5rem;
     border-radius: 10px;
     cursor: pointer;
@@ -720,7 +723,7 @@ body:has(#aside.collapse) {
 }
 
 .activeBall {
-    border: 2px solid gray !important;
+    border: 2.5px solid gray !important;
 }
 
 .settingsImgCheck {
