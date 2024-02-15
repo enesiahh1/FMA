@@ -48,7 +48,7 @@ let cardsData = [
 let storedCardsData = JSON.parse(localStorage.getItem('cardsData'));
 
 // If no data is found, set the initial cardsData and store it in local storage
-if (!storedCardsData) {
+if (!storedCardsData || storedCardsData == ``) {
     localStorage.setItem('cardsData', JSON.stringify(cardsData));
     storedCardsData = JSON.parse(localStorage.getItem('cardsData'));
 }
@@ -107,7 +107,7 @@ animationIcons.forEach(function (icons) {
 
         // Find the corresponding data object based on the card's ID
         let cardId = icons.closest('.card').id;
-        let cardDataIndex = cardsData.findIndex(data => data.id === cardId);
+        let cardDataIndex = storedCardsData.findIndex(data => data.id === cardId);
 
         // Prompt the user for a new image URL
         let newImageUrl = prompt('Enter the new image URL:');
@@ -120,11 +120,11 @@ animationIcons.forEach(function (icons) {
             // Update or add the image source to the corresponding cardData object
             if (cardDataIndex !== -1) {
                 // If the card data exists, update the imgSrc property
-                cardsData[cardDataIndex].imgUrl = newImageUrl;
+                storedCardsData[cardDataIndex].imgUrl = newImageUrl;
             }
 
             // Save the updated array in local storage
-            localStorage.setItem('cardsData', JSON.stringify(cardsData));
+            localStorage.setItem('cardsData', JSON.stringify(storedCardsData));
         } else {
             console.error('No image URL provided.');
         }
@@ -141,7 +141,7 @@ animationIcons.forEach(function (icons) {
 
         // Find the corresponding data object based on the card's ID
         let cardId = card.id;
-        let cardDataIndex = cardsData.findIndex(data => data.id === cardId);
+        let cardDataIndex = storedCardsData.findIndex(data => data.id === cardId);
 
         // Get the elements inside the card for editing
         let nameElement = card.querySelector('.name');
@@ -187,17 +187,17 @@ animationIcons.forEach(function (icons) {
 
             // Update the data in the array
             console.log(nameElement.textContent)
-            cardsData[cardDataIndex].name = nameElement.textContent.trim();
-            cardsData[cardDataIndex].description = descriptionElement.textContent.trim();
-            cardsData[cardDataIndex].price = priceElement.textContent.trim();
-            cardsData[cardDataIndex].location.city = cityElement.textContent.trim();
-            cardsData[cardDataIndex].location.country = countryElement.textContent.trim();
+            storedCardsData[cardDataIndex].name = nameElement.textContent.trim();
+            storedCardsData[cardDataIndex].description = descriptionElement.textContent.trim();
+            storedCardsData[cardDataIndex].price = priceElement.textContent.trim();
+            storedCardsData[cardDataIndex].location.city = cityElement.textContent.trim();
+            storedCardsData[cardDataIndex].location.country = countryElement.textContent.trim();
 
             // Log the updated data object
-            console.log(cardsData[cardDataIndex]);
+            console.log(storedCardsData[cardDataIndex]);
 
             // Save the updated array in local storage
-            localStorage.setItem('cardsData', JSON.stringify(cardsData));
+            localStorage.setItem('cardsData', JSON.stringify(storedCardsData));
         }
     });
 
@@ -212,14 +212,14 @@ animationIcons.forEach(function (icons) {
         card.remove();
 
         // Find the index of the object with the matching ID in the cardsData array
-        let indexToDelete = cardsData.findIndex(data => data.id === cardId);
+        let indexToDelete = storedCardsData.findIndex(data => data.id === cardId);
 
         // If the object with the matching ID is found, remove it from the array
         if (indexToDelete !== -1) {
-            cardsData.splice(indexToDelete, 1);
+            storedCardsData.splice(indexToDelete, 1);
 
             // Update local storage
-            localStorage.setItem('cardsData', JSON.stringify(cardsData));
+            localStorage.setItem('cardsData', JSON.stringify(storedCardsData));
         }
     });
 });

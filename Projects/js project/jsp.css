@@ -620,7 +620,7 @@ header {
 }
 
 .collapse li {
-    padding: 0 0.5rem;
+    padding: 0.3rem 0.7rem;
 }
 
 .collapse hr {
@@ -640,6 +640,8 @@ header {
 
 ul ul li {
     padding-left: 56px;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
     animation-name: opacityAnimation;
     animation-duration: 0.7s;
     animation-timing-function: ease-in-out;
@@ -679,7 +681,7 @@ body:has(#aside.collapse) {
 
 #settings span {
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 0.2rem 1rem;
+    padding: 0.6rem 1.3rem;
     color: white;
 }
 
