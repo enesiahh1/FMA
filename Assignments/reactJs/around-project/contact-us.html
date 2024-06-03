@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Responsive Layout</title>
+      <link rel="stylesheet" href="css/fma-general.css">
+      <link rel="stylesheet" href="css/fma-responsive.css">
+      <link rel="stylesheet" href="css/contact-us.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   </head>
+   <body>
+      <div class="container-fixed container-res">
+         <header class="row align-center">
+            <div class="col">
+               <nav class="navbar gap-2">
+                  <img src="assets/images/logo.svg" alt="Around-Logo" class="navbar-logo">
+                  <ul class="navbar-menu remove-tablet">
+                     <li><a href="index.html">Home</a></li>
+                     <li><a href="about-us.html">About us</a></li>
+                     <li><a href="services.html">Services</a></li>
+                     <li><a href="portfolio.html">Portfolio</a></li>
+                     <li><a href="blog.html">Blog</a></li>
+                     <li><a href="blog-details.html">Blog Details</a></li>
+                     <li><a href="contact-us.html" class="active">Contact us</a></li>
+                  </ul>
+                  <div class="navbar-button remove-tablet">
+                     <img src="assets/images/sun.png" alt="">
+                     <label class="switch">
+                     <input type="checkbox">
+                     <span class="slider"></span>
+                     </label>
+                     <img src="assets/images/moon.png" alt="">
+                     <button class="normal-btn case-btn">Contact us</button>
+                  </div>
+                  <div class="nav-burger block-tablet">
+                     <span class="material-icons" id="menu-icon">menu</span>
+                  </div>
+               </nav>
+            </div>
+         </header>
+      </div>
+     
+      <div class="sidebar" id="sidebar">
+        <div class="navbar-vertical">
+           <div>
+              <img src="assets/images/logo.svg" alt="Around-Logo" class="sidebar-logo">
+              <ul class="sidebar-menu">
+               <li><a href="index.html">Home</a></li>
+               <li><a href="about-us.html" class="active">About us</a></li>
+               <li><a href="services.html">Services</a></li>
+               <li><a href="portfolio.html">Portfolio</a></li>
+               <li><a href="blog.html">Blog</a></li>
+               <li><a href="blog-details.html">Blog Details</a></li>
+               <li><a href="contact-us.html">Contact us</a></li>
+              </ul>
+           </div>
+           <div class="sidebar-toogle">
+              <img src="assets/images/sun.png" >
+              <label class="switch">
+              <input type="checkbox">
+              <span class="slider"></span>
+              </label>
+              <img src="assets/images/moon.png">
+           </div>
+           <button class="sidebar-btn nav-btn">Contact us</button>
+        </div>
+     </div>
+
+      <div class="container-fixed container-res gap-4">
+      <div class="links">
+         <span>Homepage</span><span>></span><span class="active">Contacts</span>
+      </div>
+      <div class="row contact-form gap-3">
+         <div class="contactForm-content">
+            <h1>Contacts</h1>
+            <span>Get in touch with us by completing the below form or call us now</span>
+         </div>
+         <div class="row">
+            <form action="#" class="contact-form">
+               <div class="form-group">
+                  <div class="row gap-2">
+                     <div class="col-1">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                     </div>
+                     <div class="col-1">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Email Address" required>
+                     </div>
+                  </div>
+               </div>
+               <div class="form-group">
+                  <div class="row gap-2">
+                     <div class="col-1">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                     </div>
+                     <div class="col-1">
+                        <label for="location">Location</label>
+                        <select name="location">
+                           <option value="Locations">All locations</option>
+                           <option value="Kosovo">Kosovo</option>
+                           <option value="Italy">Italy</option>
+                           <option value="France">France</option>
+                           <option value="Germany">Germany</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-1">
+                     <div class="form-group">
+                        <label for="message">How can we help?</label>
+                        <textarea id="message" name="message" rows="4" placeholder="How can we help?" required></textarea>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col">
+                     <div class="form-group">
+                        <label>
+                        <input type="checkbox" required>
+                        <span class="terms">I agree to the <u>Terms & Conditions</u></span>
+                        </label>
+                     </div>
+                     <div class="form-group">
+                        <button type="submit" class="form-btn button-primary">Send a Request</button>
+                     </div>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+      </div>
+      <div class="container-fixed container-res gap-2">
+         <div class="row gap-3">
+            <footer class="footer">
+               <div class="footer-container">
+                  <div class="col-1">
+                     <div class="footer-box">
+                        <div class="copyright-desc">
+                           <img src="assets/images/logo-footer.svg" alt="Logo">
+                           <p>Tellus non diam morbi quam vel venenatis proin sed</p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-1">
+                     <div class="footer-box">
+                        <ul>
+                           <li><a href="#">Services</a></li>
+                           <li><a href="#">Industries</a></li>
+                           <li><a href="#">Reviews</a></li>
+                           <li><a href="#">Case studies</a></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col-1">
+                     <div class="footer-box">
+                        <ul>
+                           <li><a href="#">Privacy policy</a></li>
+                           <li><a href="#">Help center</a></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col-1">
+                     <div class="footer-box">
+                        <ul>
+                           <li><a href="#">Instagram</a></li>
+                           <li><a href="#">Facebook</a></li>
+                           <li><a href="#">Linkedin</a></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col-1">
+                     <div class="footer-box">
+                        <ul>
+                           <li><a href="#">+ 1 526 220 0444</a></li>
+                           <li><a href="#">+ 1 526 220 0000</a></li>
+                           <li><a href="#" class="active-link">example@gmail.com</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="copyright">
+                  <p>&copy; All rights reserved. <strong>Made by Createx Studio</strong></p>
+               </div>
+            </footer>
+         </div>
+      <script src="js/script.js"></script>
+   </body>
+</html>

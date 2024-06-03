@@ -102,6 +102,7 @@ section {
     border-radius: 10px;
     padding-bottom: 10px;
 }
+
 .s1 {
     background-color: rgba(183, 183, 183, 0.5);
 }
@@ -129,7 +130,7 @@ section {
 
 footer:hover,
 section:hover {
-    border: 1px solid white ;
+    border: 1px solid white;
     background-color: black;
     color: green;
     border-color: green;
@@ -150,14 +151,14 @@ section:hover {
     color: black;
 }
 
-input
-, textarea
-, button {
+input,
+textarea,
+button {
     font-family: inherit;
 }
 
 .footer {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
-    border: 1px solid  transparent;
+    border: 1px solid transparent;
 }

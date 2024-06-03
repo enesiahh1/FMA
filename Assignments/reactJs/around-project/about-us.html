@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Responsive Layout</title>
+      <link rel="stylesheet" href="css/fma-general.css">
+      <link rel="stylesheet" href="css/fma-responsive.css">
+      <link rel="stylesheet" href="css/about-us.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   </head>
+   <body>
+      <div class="container-fixed gap-7 container-res">
+      <header class="row align-center">
+         <div class="col">
+            <nav class="navbar gap-2">
+               <img src="assets/images/logo.svg" alt="Around-Logo" class="navbar-logo">
+               <ul class="navbar-menu remove-tablet">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="about-us.html" class="active">About us</a></li>
+                  <li><a href="services.html">Services</a></li>
+                  <li><a href="portfolio.html">Portfolio</a></li>
+                  <li><a href="blog.html">Blog</a></li>
+                  <li><a href="blog-details.html">Blog Details</a></li>
+                  <li><a href="contact-us.html">Contact us</a></li>
+               </ul>
+               <div class="navbar-button remove-tablet">
+                  <img src="assets/images/sun.png" alt="">
+                  <label class="switch">
+                  <input type="checkbox">
+                  <span class="slider"></span>
+                  </label>
+                  <img src="assets/images/moon.png" alt="">
+                  <button class="normal-btn button-primary">Contact us</button>
+               </div>
+               <div class="nav-burger block-tablet">
+                  <span class="material-icons" id="menu-icon">menu</span>
+               </div>
+            </nav>
+         </div>
+      </header>
+      <div class="sidebar" id="sidebar">
+         <div class="navbar-vertical">
+            <div>
+               <img src="assets/images/logo.svg" alt="Around-Logo" class="sidebar-logo">
+               <ul class="sidebar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about-us.html" class="active">About us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="blog-details.html">Blog Details</a></li>
+                <li><a href="contact-us.html">Contact us</a></li>
+               </ul>
+            </div>
+            <div class="sidebar-toogle">
+               <img src="assets/images/sun.png" alt="">
+               <label class="switch">
+               <input type="checkbox">
+               <span class="slider"></span>
+               </label>
+               <img src="assets/images/moon.png" alt="">
+            </div>
+            <button class="sidebar-btn nav-btn">Contact us</button>
+         </div>
+      </div>
+      <div class="row hero gap-3">
+         <div class="wrapper-lg">
+            <div class="col-2">
+               <div class="hero-content">
+                  <h1>The effective solutions for your business</h1>
+                  <span>We are a team who creates marketing strategies for B2B and B2C companies</span>
+                  <div class="send-btn">
+                     <form>
+                        <input type="text" placeholder="&#128231 Enter your email" />
+                        <button class="normal-btn btn-primary button-primary">Book a call</button>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col img-fixed">
+            <img src="assets/images/header-img.png" class="img-xxl">
+         </div>
+      </div>
+      <div class="row-direction gap-3">
+         <div class="col">
+            <div class="card-header">
+               <span class="section-subtitle">Our Mission</span>
+               <h1 class="section-title">Professional approach </h1>
+            </div>
+         </div>
+         <div class="col">
+            <div class="services-container">
+               <div class="services">
+                  <div class="service-card">
+                     <div class="icon">
+                        <img src="assets/images/services-icon-1.svg" alt="Icon">
+                     </div>
+                     <h3>Advertising communications</h3>
+                     <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint velit officia
+                        consequat duis enim velit mollit. 
+                     </p>
+                  </div>
+               </div>
+               <div class="services">
+                  <div class="service-card">
+                     <div class="icon">
+                        <img src="assets/images/services-icon-2.svg" alt="Icon">
+                     </div>
+                     <h3>Marketing and branding</h3>
+                     <p>Find aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                        nulla pariatur neque congue. 
+                     </p>
+                  </div>
+               </div>
+               <div class="services">
+                  <div class="service-card">
+                     <div class="icon">
+                        <img src="assets/images/services-icon-2.svg" alt="Icon">
+                     </div>
+                     <h3>Marketing and branding</h3>
+                     <p>Find aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                        nulla pariatur neque congue. 
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col">
+               <div class="how-we-work-container">
+                  <div class="how-we-work-img just-tablet-center">
+                     <div class="how-we-work-text">
+                        <span>How we work</span>
+                        <h1>The key to success</h1>
+                     </div>
+                     <img src="assets/images/image.png" alt="">
+                  </div>
+                  <div class="how-we-work-cards">
+                     <div class="card-processInsights p-4">
+                        <div class="processInsights-number p-1">01</div>
+                        <div>
+                           <h2>Formulation of the problem</h2>
+                           <span>Find aute irure dolor in reprehenderi voluptate velit esse cillum dolore eu fugiat
+                           nulla
+                           pariatur am luctus </span>
+                        </div>
+                     </div>
+                     <div class="card-processInsights p-4">
+                        <div class="processInsights-number p-1">02</div>
+                        <div>
+                           <h2>Assessment of the current state</h2>
+                           <span>Risus quam quis at euismod vitae dui elementu eu in diam malesuada mattis ut urna
+                           integer
+                           erat nisi, nibh </span>
+                        </div>
+                     </div>
+                     <div class="card-processInsights p-4">
+                        <div class="processInsights-number p-1">03</div>
+                        <div>
+                           <h2>Business plan creation</h2>
+                           <span>A sagittis morbi massa venenatis, egestas viverra ac elit nibh tellus nisi in nec
+                           tellus
+                           mauris feugiat gravida </span>
+                        </div>
+                     </div>
+                     <div class="card-processInsights p-4">
+                        <div class="processInsights-number p-1">04</div>
+                        <div>
+                           <h2>Strategy implementation</h2>
+                           <span>Elementum purus, nisl ipsum sit. Amet sit praesent proin sit cras. Leo sed
+                           praesent nunc
+                           vel nec risus</span>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="row-direction gap-3">
+            <div class="col">
+               <div class="card-header">
+                  <span class="section-subtitle">Our Team</span>
+                  <h1 class="section-title">Team of professionals</h1>
+               </div>
+            </div>
+            <div class="col">
+               <div class="team-members-container">
+                  <div class="members-card">
+                     <img src="assets/images/team-member-1.png" alt="">
+                     <div class="member-info">
+                        <div class="member-name">Alice Patel</div>
+                        <div class="role">Software Engineer</div>
+                        <div class="social-icons">
+                           <a href="#" class="fab fa-instagram social-icon"></a>
+                           <a href="#" class="fab fa-facebook-f social-icon"></a>
+                           <a href="#" class="fab fa-linkedin-in"></a>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="members-card">
+                     <img src="assets/images/team-member-2.png" alt="">
+                     <div class="member-info">
+                        <div class="member-name">Daniel Garcia</div>
+                        <div class="role">Network Engineer</div>
+                        <div class="social-icons">
+                           <a href="#" class="fab fa-instagram social-icon"></a>
+                           <a href="#" class="fab fa-facebook-f social-icon"></a>
+                           <a href="#" class="fab fa-linkedin-in"></a>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="members-card">
+                     <img src="assets/images/team-member-3.png" alt="">
+                     <div class="member-info">
+                        <div class="member-name">Marta Black</div>
+                        <div class="role">Web Dev</div>
+                        <div class="social-icons">
+                           <a href="#" class="fab fa-instagram social-icon"></a>
+                           <a href="#" class="fab fa-facebook-f social-icon"></a>
+                           <a href="#" class="fab fa-linkedin-in"></a>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="members-card">
+                     <img src="assets/images/team-member-4.png" alt="">
+                     <div class="member-info">
+                        <div class="member-name">Ethan Parker</div>
+                        <div class="role"> Database Administrator</div>
+                        <div class="social-icons">
+                           <a href="#" class="fab fa-instagram social-icon"></a>
+                           <a href="#" class="fab fa-facebook-f social-icon"></a>
+                           <a href="#" class="fab fa-linkedin-in"></a>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="members-card">
+                     <img src="assets/images/team-member-5.png" alt="">
+                     <div class="member-info">
+                        <div class="member-name">Emily Chen</div>
+                        <div class="role">Data Scientist</div>
+                        <div class="social-icons">
+                           <a href="#" class="fab fa-instagram social-icon"></a>
+                           <a href="#" class="fab fa-facebook-f social-icon"></a>
+                           <a href="#" class="fab fa-linkedin-in"></a>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="members-card">
+                     <img src="assets/images/team-member-6.png" alt="">
+                     <div class="member-info">
+                        <div class="member-name">James Lee</div>
+                        <div class="role">Cybersecurity Analyst</div>
+                        <div class="social-icons">
+                           <a href="#" class="fab fa-instagram social-icon"></a>
+                           <a href="#" class="fab fa-facebook-f social-icon"></a>
+                           <a href="#" class="fab fa-linkedin-in"></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="row-direction">
+            <div class="col">
+               <div class="card-header">
+                  <span class="section-subtitle">Testimonials</span>
+                  <h1>What our clients say</h1>
+               </div>
+            </div>
+            <div class="col">
+               <div class="testimonials-container">
+                  <div class="profile">
+                     <img src="assets/images/aboutUs-avatar.png" alt="" class="client-picture">
+                     <div class="username">
+                        <span>Lilian Bocouse</span>
+                        <span class="role">Head of Marketing</span>
+                     </div>
+                  </div>
+                  <div class="testimonials">
+                     <p>“Around provides us with the detailed and accurate data we need to make strategic
+                        decisions. All
+                        tools are constantly being improved and contain a lot of useful and interesting
+                        information. Thanks
+                        to Around, we can constantly analyze our big data quickly and efficiently.”
+                     </p>
+                  </div>
+               </div>
+            </div>
+            <div class="col">
+               <div class="slider-container">
+                  <div class="slide"></div>
+                  <div class="slide"></div>
+                  <div class="slide"></div>
+                  <div class="slide"></div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row-direction">
+         <div class="col">
+            <div class="locations-header">
+               <div>
+                  <span class="section-subtitle">Where</span>
+                  <h1 class="section-title">We are located in London</h1>
+               </div>
+               <div class="button-container gap-1">
+                  <button class="round-button">&leftarrow;</button>
+                  <button class="round-button">&rightarrow;</button>
+               </div>
+            </div>
+         </div>
+         <div class="col">
+            <div class="locations-container gap-3">
+               <div class="image">
+                  <img src="assets/images/Location-1.png" alt="">
+                  <div class="overlay">
+                     <span class="material-icons zoom-in">zoom_in</span> <!-- Material Icons icon -->
+                  </div>
+               </div>
+               <div class="image">
+                  <img src="assets/images/Location-2.png" alt="">
+                  <div class="overlay">
+                     <span class="material-icons zoom-in">zoom_in</span>
+                  </div>
+               </div>
+               <div class="image">
+                  <img src="assets/images/Location-3.png" alt="">
+                  <div class="overlay">
+                     <span class="material-icons zoom-in">zoom_in</span>
+                  </div>
+               </div>
+               <div class="image">
+                  <img src="assets/images/Location-4.png" alt="">
+                  <div class="overlay">
+                     <span class="material-icons zoom-in">zoom_in</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row-direction gap-3">
+         <div class="col">
+            <div class="card-header">
+               <h1 class="section-title">Our Services</h1>
+            </div>
+         </div>
+         <div class="col">
+            <div class="services-container">
+               <div class="services">
+                  <div class="service-card">
+                     <div class="icon">
+                        <img src="assets/images/services-icon-1.svg" alt="Icon">
+                     </div>
+                     <h3>Advertising communications</h3>
+                     <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint velit officia
+                        consequat duis enim velit mollit. 
+                     </p>
+                  </div>
+                  <div class="button-container">
+                     <button class="round-button">&rightarrow;</button>
+                  </div>
+               </div>
+               <div class="services">
+                  <div class="service-card">
+                     <div class="icon">
+                        <img src="assets/images/services-icon-2.svg" alt="Icon">
+                     </div>
+                     <h3>Marketing and branding</h3>
+                     <p>Find aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                        nulla pariatur neque congue. 
+                     </p>
+                  </div>
+                  <div class="button-container">
+                     <button class="round-button">&rightarrow;</button>
+                  </div>
+               </div>
+               <div class="services">
+                  <div class="service-card">
+                     <div class="icon">
+                        <img src="assets/images/services-icon-3.svg" alt="Icon">
+                     </div>
+                     <h3>Strategy development </h3>
+                     <p>Hac erat leo proin odio est sed sit felis facilisi integer sed congue neque turpis
+                        dictumst sit sed volutpat aliquet tortor non.
+                     </p>
+                  </div>
+                  <div class="button-container">
+                     <button class="round-button">&rightarrow;</button>
+                  </div>
+               </div>
+               <div class="services">
+                  <div class="service-card">
+                     <div class="icon">
+                        <img src="assets/images/services-icon-4.svg" alt="Icon">
+                     </div>
+                     <h3>Email marketing</h3>
+                     <p>Adipiscing posuere dui, amet, augue nisl dictum justo, enim. Sed neque congue non quam
+                        ultrices interdum vitae vestibulum. 
+                     </p>
+                  </div>
+                  <div class="button-container">
+                     <button class="round-button">&rightarrow;</button>
+                  </div>
+               </div>
+               <div class="services">
+                  <div class="service-card">
+                     <div class="icon">
+                        <img src="assets/images/services-icon-5.svg" alt="Icon">
+                     </div>
+                     <h3>Working on communication</h3>
+                     <p>Molestie enim tempus egestas a at enim. Velit hendrerit nibh eget porta pretium. Ipsum
+                        orci habitasse eget malesuada platea.
+                     </p>
+                  </div>
+                  <div class="button-container">
+                     <button class="round-button">&rightarrow;</button>
+                  </div>
+               </div>
+               <div class="services">
+                  <div class="service-card">
+                     <div class="icon">
+                        <img src="assets/images/services-icon-6.svg" alt="Icon">
+                     </div>
+                     <h3>Business copywriting</h3>
+                     <p>Massa donec quam orci feugiat. Quis iaculis facilisi ornare aenean lorem enim purus in
+                        lacus in ullamcorper diam consequat.
+                     </p>
+                  </div>
+                  <div class="button-container">
+                     <button class="round-button">&rightarrow;</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row gap-3">
+         <footer class="footer">
+            <div class="footer-container">
+               <div class="col-1">
+                  <div class="footer-box">
+                     <div class="copyright-desc">
+                        <img src="assets/images/logo-footer.svg" alt="Logo">
+                        <p>Tellus non diam morbi quam vel venenatis proin sed</p>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-1">
+                  <div class="footer-box">
+                     <ul>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Industries</a></li>
+                        <li><a href="#">Reviews</a></li>
+                        <li><a href="#">Case studies</a></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-1">
+                  <div class="footer-box">
+                     <ul>
+                        <li><a href="#">Privacy policy</a></li>
+                        <li><a href="#">Help center</a></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-1">
+                  <div class="footer-box">
+                     <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Linkedin</a></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-1">
+                  <div class="footer-box">
+                     <ul>
+                        <li><a href="#">+ 1 526 220 0444</a></li>
+                        <li><a href="#">+ 1 526 220 0000</a></li>
+                        <li><a href="#" class="active-link">example@gmail.com</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="copyright">
+               <p>&copy; All rights reserved. <strong>Made by Createx Studio</strong></p>
+            </div>
+         </footer>
+      </div>
+      <script src="js/script.js"></script>
+   </body>
+</html>
