@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>resize</title>
+</head>
+
+<body>
+    <h1>Screen Width</h1>
+    <p id="screen-width"></p>
+
+    <script>
+        function displayScreenWidth() {
+            const screenWidth = window.innerWidth;
+            document.getElementById('screen-width').innerText = `The width of your screen is ${screenWidth}px`;
+        }
+
+        window.onload = displayScreenWidth;
+
+        window.onresize = displayScreenWidth;
+    </script>
+</body>
+
+</html>

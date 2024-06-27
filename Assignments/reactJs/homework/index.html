@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="fma-general.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container1 {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .task-form {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .task-form input,
+        .task-form button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .task-form input[type="text"] {
+            grid-column: span 2;
+        }
+
+        .task-form button {
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .task-form button:hover {
+            background: #0056b3;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .filter-button {
+            flex: 1;
+            padding: 10px;
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .filter-button:hover {
+            background: #e0e0e0;
+        }
+
+        .task-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .task-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            background: #fafafa;
+        }
+
+        .task-list li .task-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .task-list li .task-buttons button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .task-list li .task-buttons button:hover {
+            background: #0056b3;
+        }
+
+        .task-list li .delete-button {
+            background: #dc3545;
+        }
+
+        .task-list li .delete-button:hover {
+            background: #c82333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container1">
+        <h1>Task Manager</h1>
+        <div class="task-form">
+            <input type="text" id="taskInput" placeholder="Task Description" class="form-control">
+            <input type="date" id="taskDate" class="form-control">
+            <input type="time" id="taskTime" class="form-control">
+            <label for="taskImportant" class="form-check-label">Important</label>
+            <input type="checkbox" id="taskImportant" class="form-check-input">
+            <input type="color" id="taskColor" class="form-control">
+            <button id="addTaskButton" class="btn btn-primary">Add Task</button>
+        </div>
+        <div class="filter-buttons row just-between mb-3">
+            <button class="filter-button btn btn-light" data-filter="all">All</button>
+            <button class="filter-button btn btn-light" data-filter="yesterday">Yesterday</button>
+            <button class="filter-button btn btn-light" data-filter="today">Today</button>
+            <button class="filter-button btn btn-light" data-filter="tomorrow">Tomorrow</button>
+        </div>
+        <ul id="taskList" class="task-list row align-center justify-between"></ul>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const taskInput = document.getElementById('taskInput');
+            const taskDate = document.getElementById('taskDate');
+            const taskTime = document.getElementById('taskTime');
+            const taskImportant = document.getElementById('taskImportant');
+            const taskColor = document.getElementById('taskColor');
+            const addTaskButton = document.getElementById('addTaskButton');
+            const taskList = document.getElementById('taskList');
+            const filterButtons = document.querySelectorAll('.filter-button');
+
+            addTaskButton.addEventListener('click', addTask);
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterTasks(button.getAttribute('data-filter'));
+                });
+            });
+
+            function addTask() {
+                const description = taskInput.value;
+                const date = taskDate.value;
+                const time = taskTime.value;
+                const isImportant = taskImportant.checked;
+                const color = taskColor.value;
+
+                if (!description || !date || !time) {
+                    alert('Please fill out all fields.');
+                    return;
+                }
+
+                const taskItem = document.createElement('li');
+                taskItem.style.color = color;
+                taskItem.classList.add('list-group-item');
+                taskItem.innerHTML = `
+                    <span>${description} - ${date} ${time} ${isImportant ? '(Important)' : ''}</span>
+                    <div class="task-buttons">
+                        <button class="edit-button btn btn-primary btn-sm">Edit</button>
+                        <button class="delete-button btn btn-danger btn-sm">Delete</button>
+                    </div>
+                `;
+
+                taskItem.querySelector('.delete-button').addEventListener('click', () => {
+                    taskItem.remove();
+                });
+
+                taskItem.querySelector('.edit-button').addEventListener('click', () => {
+                    editTask(taskItem, description, date, time, isImportant, color);
+                });
+
+                taskList.appendChild(taskItem);
+                clearInputs();
+            }
+
+            function clearInputs() {
+                taskInput.value = '';
+                taskDate.value = '';
+                taskTime.value = '';
+                taskImportant.checked = false;
+                taskColor.value = '#000000';
+            }
+
+            function filterTasks(filter) {
+                const tasks = taskList.querySelectorAll('li');
+                const today = new Date();
+                const yesterday = new Date(today);
+                yesterday.setDate(yesterday.getDate() - 1);
+                const tomorrow = new Date(today);
+                tomorrow.setDate(tomorrow.getDate() + 1);
+
+                tasks.forEach(task => {
+                    const taskDate = new Date(task.querySelector('span').textContent.split(' - ')[1].split(' ')[0]);
+                    task.style.display = 'none';
+
+                    if (filter === 'all') {
+                        task.style.display = 'flex';
+                    } else if (filter === 'yesterday' && isSameDay(taskDate, yesterday)) {
+                        task.style.display = 'flex';
+                    } else if (filter === 'today' && isSameDay(taskDate, today)) {
+                        task.style.display = 'flex';
+                    } else if (filter === 'tomorrow' && isSameDay(taskDate, tomorrow)) {
+                        task.style.display = 'flex';
+                    }
+                });
+            }
+
+            function isSameDay(date1, date2) {
+                return date1.getFullYear() === date2.getFullYear() &&
+                    date1.getMonth() === date2.getMonth() &&
+                    date1.getDate() === date2.getDate();
+            }
+
+            function editTask(taskItem, description, date, time, isImportant, color) {
+                taskInput.value = description;
+                taskDate.value = date;
+                taskTime.value = time;
+                taskImportant.checked = isImportant;
+                taskColor.value = color;
+
+                addTaskButton.textContent = 'Update Task';
+                addTaskButton.removeEventListener('click', addTask);
+                addTaskButton.addEventListener('click', () => updateTask(taskItem));
+
+                function updateTask(taskItem) {
+                    taskItem.style.color = taskColor.value;
+                    taskItem.innerHTML = `
+                        <span>${taskInput.value} - ${taskDate.value} ${taskTime.value} ${taskImportant.checked ? '(Important)' : ''}</span>
+                        <div class="task-buttons">
+                            <button class="edit-button btn btn-primary btn-sm">Edit</button>
+                            <button class="delete-button btn btn-danger btn-sm">Delete</button>
+                        </div>
+                    `;
+
+                    taskItem.querySelector('.delete-button').addEventListener('click', () => {
+                        taskItem.remove();
+                    });
+
+                    taskItem.querySelector('.edit-button').addEventListener('click', () => {
+                        editTask(taskItem, taskInput.value, taskDate.value, taskTime.value, taskImportant.checked, taskColor.value);
+                    });
+
+                    addTaskButton.textContent = 'Add Task';
+                    addTaskButton.removeEventListener('click', updateTask);
+                    addTaskButton.addEventListener('click', addTask);
+                    clearInputs();
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
