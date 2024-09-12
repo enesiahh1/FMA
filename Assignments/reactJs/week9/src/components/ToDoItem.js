@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faEdit } from '@fortawesome/free-solid-svg-icons';
 
-const ToDoItem = ({ task, index, toggleCompleted, updateTask }) => {
+const ToDoItem = ({ task, index }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTask, setEditedTask] = useState(task.task);
   const [editedDate, setEditedDate] = useState(task.date);
@@ -26,33 +26,33 @@ const ToDoItem = ({ task, index, toggleCompleted, updateTask }) => {
     <li style={{ textDecoration: task.isCompleted ? 'line-through' : 'none', color: task.color }}>
       {isEditing ? (
         <div>
-          <input 
-            type="text" 
-            value={editedTask} 
-            onChange={(e) => setEditedTask(e.target.value)} 
+          <input
+            type="text"
+            value={editedTask}
+            onChange={(e) => setEditedTask(e.target.value)}
           />
-          <input 
-            type="date" 
-            value={editedDate} 
-            onChange={(e) => setEditedDate(e.target.value)} 
+          <input
+            type="date"
+            value={editedDate}
+            onChange={(e) => setEditedDate(e.target.value)}
           />
-          <input 
-            type="time" 
-            value={editedTime} 
-            onChange={(e) => setEditedTime(e.target.value)} 
+          <input
+            type="time"
+            value={editedTime}
+            onChange={(e) => setEditedTime(e.target.value)}
           />
           <label>
             Important
-            <input 
-              type="checkbox" 
-              checked={editedIsImportant} 
-              onChange={(e) => setEditedIsImportant(e.target.checked)} 
+            <input
+              type="checkbox"
+              checked={editedIsImportant}
+              onChange={(e) => setEditedIsImportant(e.target.checked)}
             />
           </label>
-          <input 
-            type="color" 
-            value={editedColor} 
-            onChange={(e) => setEditedColor(e.target.value)} 
+          <input
+            type="color"
+            value={editedColor}
+            onChange={(e) => setEditedColor(e.target.value)}
           />
           <button onClick={handleSave}>Save</button>
           <button onClick={() => setIsEditing(false)}>Cancel</button>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="assets/css/fma-general.css">
+  <link rel="stylesheet" href="assets/css/fma-responsive.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <div class="container-fluid just-center" style="background-image: url('assets/images/back.jpg');">
+    <div class="form-container m-2 p-2">
+      <h1>My TODO's</h1>
+      <form id="todo-form m-1 p-1">
+        <div class="form-group">
+          <label for="task">Task</label>
+          <input type="text" id="task" name="task" placeholder="Enter your task...">
+        </div>
+        <div class="form-group">
+          <label for="datetime">Date and Time</label>
+          <input type="datetime-local" id="datetime" name="datetime">
+        </div>
+        <div class="row form-group-row">
+          <div class="form-group checkbox-wrapper">Important
+            <input type="checkbox" id="important" name="important">
+            <label for="important">
+              <span class="tick_mark"></span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="color">Color</label>
+            <input type="color" id="color" name="color">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">ADD NEW TASK</button>
+        <div class="button-group">
+          <button type="button" class="btn btn-primary-outline btn-all">All</button>
+          <button type="button" class="btn btn-primary-outline btn-all">Today</button>
+          <button type="button" class="btn btn-primary-outline btn-all">Tomorrow</button>
+          <button type="button" class="btn btn-primary-outline btn-all">Yesterday</button>
+        </div>
+      </form>
+      <ul id="task-list" class="row-direction">
+        <li>
+          Task 1
+          <div class="task-icones">
+            <span class="material-icons verified">verified</span>
+            <span class="material-icons edit">edit</span>
+          </div>
+        </li>
+        <li>
+          Task 2
+          <div class="task-icones">
+            <span class="material-icons cancel">block</span>
+            <span class="material-icons save">save</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+
+</html>

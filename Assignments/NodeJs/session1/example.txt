@@ -1,0 +1,6 @@
+hello world
+
+1. write file - fs
+2.path - find file
+3.consile file path
+4.read that file content
