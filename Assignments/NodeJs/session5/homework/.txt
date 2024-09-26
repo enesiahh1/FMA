@@ -1,0 +1,24 @@
+
+### **Homework: Build a Book Management System**
+
+**Objective:**
+Students will build a **Book Management System** using Node.js, Express.js, and MySQL. This system should allow users to manage books in a library.
+
+---
+
+### **Requirements:**
+
+1. **Set up a MySQL database called `library`.**
+2. Create a table called `books` with the following fields:
+    - `id` (Primary Key, Auto-Increment)
+    - `title` (String)
+    - `author` (String)
+    - `genre` (String)
+    - `year` (Integer)
+3. Implement the following CRUD operations:
+    - **POST** `/books`: Add a new book to the library.
+    - **GET** `/books`: Retrieve a list of all books.
+    - **PUT** `/books/:id`: Update the information for a specific book.
+    - **DELETE** `/books/:id`: Remove a book from the library.
+4. **Bonus Task**: Implement search functionality to search books by author.
+

@@ -22,6 +22,7 @@ app.get('/products/:id', (req, res) => {
     res.json(product);
 });
 
+
 // Route: Add a new product
 app.post('/products', (req, res) => {
     const { name, price } = req.body;
