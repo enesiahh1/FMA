@@ -1,98 +1,129 @@
-const mongoose = require("mongoose");
+// 1. The user plays first. Dmth user is X.
+// 2. The user always plays correctly
+const fs = require('fs').promises;
+const inquirer = require('@inquirer/prompts');
 
-mongoose
-  .connect(
-    "mongodb+srv://enesmaloku22:qaDiTiPerGangon@fma-enes.99aww.mongodb.net/SESSION4",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+
+async function main(){
+    let game = [
+        ['.', '.', '.'],
+        ['.', '.', '.'],
+        ['.', '.', '.'],
+    ];
+
+    const GAME_FILE = 'game.txt';
+
+    await fs.writeFile(GAME_FILE, gameToString(game));
+
+
+    userTurn = true;
+
+    while (true){
+        if (userTurn){
+            await inquirer.confirm({message: 'Your turn. Did you play?'});
+            game = stringToGame((await fs.readFile(GAME_FILE)).toString());
+        }
+        else{
+            game = stringToGame((await fs.readFile(GAME_FILE)).toString());
+
+            let possibleMoves = [];
+
+            for (let row = 0; row < 3; row++){
+                for (let col = 0; col < 3; col++){
+                    if (game[row][col] === '.'){
+                        possibleMoves.push([row, col]);
+                    }
+                }
+            }
+
+            const move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
+
+            game[move[0]][move[1]] = 'O';
+
+            await fs.writeFile(GAME_FILE, gameToString(game));
+        }
+
+        //is the game over?
+        const gameResult = getWinner(game);
+
+
+        switch(gameResult){
+            case 'X':
+                console.log('Congratulations, you won!');
+                return;
+            case 'O':
+                console.log('Oops, you lost!');
+                return;
+            case 'T':
+                console.log('It is a tie!');
+                return;
+            default:
+                break;
+        }
+
+        userTurn = !userTurn;
     }
-  )
-  .then(() => console.log("Connected to database"))
-  .catch((err) => console.error("Failed to connect to MongoDB", err));
+}
 
-const userSchema = new mongoose.Schema({
-  name: { type: String, require: true },
-  email: { type: String, require: true, unique: true },
-  age: { type: Number },
-});
+function gameToString(game){
+    return game.map(row => row.join(' ')).join('\n');
+}
 
-const User = mongoose.model("User", userSchema);
+function stringToGame(gameString){
+    return gameString.split('\n').map(s => s.split(' '));
+}
 
-// const user = new User({
-//   name: "James Bond",
-//   email: "james0047@gmail.com",
-//   age: 43,
-// });
+function getWinner(game){
+    //if X has won, return X
+    //if O has won, return O
+    //if Tie, return T
+    //if noone has won, return null
 
-// user
-//   .save()
-//   .then((user) => console.log("User created", user))
-//   .catch((err) => console.log("Error creating user", err));
+    function allEqual(arr){
+        return arr.every(el => el === arr[0]);
+    }
 
-User.find()
-  .then((users) => console.log("All users:", users))
-  .catch((err) => console.error("Error fetching users:", err));
+    //check rows
+    for (let row = 0; row < 3; row++){
+        if (game[row][0] !== '.' && allEqual(game[row]))
+            return game[row][0];
+    }
 
-// User.findByIdAndUpdate("66e8711e67d3b3d47d6a5dbf", { age: 31 })
-//   .then((users) => console.log("Update update:", users))
-//   .catch((err) => console.error("Error updating user:", err));
+    //check cols
+    for (let col = 0; col < 3; col++){
+        let colArray = []
+        for (let row = 0; row < 3; row++){
+            colArray.push(game[row][col]);
+        }
 
-  
-// User.findByIdAndDelete("66e871a30853a4d9bb776d8e", { age: 31 })
-// .then((users) => console.log("Update deleted:", users))
-// .catch((err) => console.error("Error updating user:", err));
+        if(game[0][col] != '.' && allEqual(colArray))
+            return game[0][col];
+    }
 
-// Create an array of 25 users
-const users = [
-    { name: "Alice", email: "alice@example.com", age: 25 },
-    { name: "Bob", email: "bob@example.com", age: 30 },
-    { name: "Charlie", email: "charlie@example.com", age: 35 },
-    { name: "David", email: "david@example.com", age: 40 },
-    { name: "Eve", email: "eve@example.com", age: 28 },
-    { name: "Frank", email: "frank@example.com", age: 33 },
-    { name: "Grace", email: "grace@example.com", age: 27 },
-    { name: "Hank", email: "hank@example.com", age: 36 },
-    { name: "Ivy", email: "ivy@example.com", age: 24 },
-    { name: "Jack", email: "jack@example.com", age: 22 },
-    { name: "Karen", email: "karen@example.com", age: 45 },
-    { name: "Leo", email: "leo@example.com", age: 31 },
-    { name: "Mandy", email: "mandy@example.com", age: 29 },
-    { name: "Nick", email: "nick@example.com", age: 38 },
-    { name: "Olivia", email: "olivia@example.com", age: 32 },
-    { name: "Paul", email: "paul@example.com", age: 26 },
-    { name: "Quincy", email: "quincy@example.com", age: 34 },
-    { name: "Rachel", email: "rachel@example.com", age: 37 },
-    { name: "Sam", email: "sam@example.com", age: 23 },
-    { name: "Tina", email: "tina@example.com", age: 41 },
-    { name: "Uma", email: "uma@example.com", age: 30 },
-    { name: "Victor", email: "victor@example.com", age: 33 },
-    { name: "Wendy", email: "wendy@example.com", age: 39 },
-    { name: "Xander", email: "xander@example.com", age: 28 },
-    { name: "Yvonne", email: "yvonne@example.com", age: 29 }
-];
+    //check diagonals
+    let firstDiagonalArray = []
+    let secondDiagonalArray = []
+    for (let row = 0; row < 3; row++){
+        firstDiagonalArray.push(game[row][row]);
+        secondDiagonalArray.push(game[row][2 - row]);
+    }
 
-// Insert the users into the database
-// User.insertMany(users)
-//     .then((userdata) => {
-//         console.log('Users inserted successfully', userdata);
-//         mongoose.connection.close(); // Close the connection after insert
-//     })
-//     .catch(err => {
-//         console.log('Error inserting users: ', err);
-//         mongoose.connection.close();
-//     });
+    if(game[0][0] !== '.' && allEqual(firstDiagonalArray))
+        return game[0][0];
 
-// User.find()
-//     .then((users) => console.log("All users:", users))
-//     .catch((err) => console.error("Error fetching users:", err));
+    if(game[0][2] !== '.' && allEqual(secondDiagonalArray))
+        return game[0][2];
 
-    const page = 1;
-    const limit = 5;
+    //check for tie
+    for (let row = 0; row < 3; row++){
+        for (let col = 0; col < 3; col++){
+            if (game[row][col] == '.'){
+                return null;
+            }
+        }
+    }
 
+    return 'T';
+}
 
-    User.find()
-        .skip((page - 1) * limit)
-        .limit(limit)
-        .then((users) => console.log("Paginated users:", users))
-        .catch((err) => console.error("Error fetching paginated users:", err));
+main();

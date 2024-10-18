@@ -1,0 +1,2 @@
+node js = run time envirments qe egzekuton js;
+npm init = osht 

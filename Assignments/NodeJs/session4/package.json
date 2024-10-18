@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start":"nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,9 +10,6 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "mongoose": "^8.6.2"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.4"
+    "@inquirer/prompts": "^7.0.0"
   }
 }

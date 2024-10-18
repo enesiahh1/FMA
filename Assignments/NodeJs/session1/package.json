@@ -1,0 +1,17 @@
+{
+  "name": "sports",
+  "version": "1.0.0",
+  "description": "A app for sports",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node index.js"
+  },
+  "keywords": [
+    "sports",
+    "football",
+    "basketball"
+  ],
+  "author": "Enes Maloku",
+  "license": "ISC"
+}
